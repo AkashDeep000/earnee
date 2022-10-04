@@ -1,0 +1,9 @@
+{
+  "appId": "com.splitwith.app",
+  "appName": "SplitWith",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+  
+}
+
+

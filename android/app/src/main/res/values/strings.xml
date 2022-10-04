@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">SplitWith</string>
+    <string name="title_activity_main">SplitWith</string>
+    <string name="package_name">com.splitwith.app</string>
+    <string name="custom_url_scheme">com.splitwith.app</string>
+</resources>
