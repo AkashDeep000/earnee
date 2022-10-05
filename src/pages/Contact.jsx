@@ -13,20 +13,23 @@ export default function Contact() {
 Contact Us
       </h2>
       <p className="text-slate-700 px-6 py-4 text-xl w-11/12 max-w-[50ch]">
-        <span className="text-slate-700 text-2xl font-bold">
-Earnee Platforn
-        </span>
-        <br />
+      <span className="text-slate-700 text-2xl font-bold">
+        Earnee Platforn
+      </span>
       <br />
-10th mile (near bus-stand)
-      <br />Shibrampur, Namkhana
-      <br />South 24 Parganas
-    <br />West Bengal, 743357
+      <br />
+      10th mile (near bus-stand)
+      <br />
+      Shibrampur, Namkhana
+      <br />
+      South 24 Parganas
+      <br />
+      West Bengal, 743357
   <br />
   <br />
 <span className="font-bold">contact@earnee.in</span>
 <br />
-<span className="font-bold">+9175489XXXXX</span>
+<span className="font-bold">+919875410668</span>
 
 </p>
 </div>
