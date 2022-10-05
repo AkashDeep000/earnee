@@ -18,13 +18,13 @@ Contact Us
       </span>
       <br />
       <br />
-      10th mile (near bus-stand)
+      Rajpur-Sonarpur Road
       <br />
-      Shibrampur, Namkhana
+      Sonarpur
       <br />
       South 24 Parganas
       <br />
-      West Bengal, 743357
+      West Bengal, kol-700150
   <br />
   <br />
 <span className="font-bold">contact@earnee.in</span>
