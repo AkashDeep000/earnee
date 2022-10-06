@@ -110,7 +110,7 @@ return (
 </div>
 {el["@expand"].courses.map(course => {
 return (
-<div className="py-2 grid grid-cols-[auto_1fr] gap-2">
+<div className="py-2 grid grid-cols-[auto_1fr] gap-2 font-calistoga">
 <FcOk className="w-6 h-6 inline" />
 {course.name}
 </div>

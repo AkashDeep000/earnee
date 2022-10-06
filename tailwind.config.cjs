@@ -6,6 +6,7 @@ module.exports = {
     fontFamily: {
       poppins: ["Poppins", "sans-serif"],
       ubuntu: ["Ubuntu", "sans-serif"],
+      calistoga: ["Calistoga", "sans-serif"],
     },
     },
     

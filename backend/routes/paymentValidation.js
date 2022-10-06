@@ -1,83 +1,67 @@
 import express from 'express';
 const router = express.Router()
-
+import dotenv from 'dotenv'
+dotenv.config();
 import {
   uid
 } from "uid"
-import Razorpay from 'razorpay'
+import crypto from "crypto";
 import pb from "../pb/index.js"
 import createError from "http-errors";
 
 router.post('/', async (req, res, next) => {
-  const {
-    userId, packageId
-  } = req.body
-  if (!userId || !packageId) {
-    next(createError.Unauthorized())
-  }
+  const secret = process.env.PASSWORD
+	console.log(req.body)
 
-  const Package = await pb.records.getOne('packages', packageId);
-console.log(Package)
-  const payment_capture = 1
-  const amount = Package.price
-  const currency = 'INR'
+	const shasum = crypto.createHmac('sha256', secret)
+	shasum.update(JSON.stringify(req.body))
+	const digest = shasum.digest('hex')
+ 
+	console.log(digest, req.headers['x-razorpay-signature'])
 
-  //production
-  //	key_id: 'rzp_live_EwHLrT8UTaUgoG',
-  //key_secret: 'bYut9jQaNdDb8S1bIQXrnCOw'
-  //testing
-  //key_id: 'rzp_test_dhlZTnBnAibhF6',
-  //	key_secret: 'V088sC8GxHmOjwdv9K3VLkIn'
-  const razorpay = new Razorpay({
-    key_id: 'rzp_test_dhlZTnBnAibhF6',
-    key_secret: 'V088sC8GxHmOjwdv9K3VLkIn'
-  })
-
-  const options = {
-    amount: amount * 100,
-    currency,
-    receipt: uid(16),
-    notes: {
-      number: req.body.number
-    },
-    payment_capture
-  }
-
-  try {
-    const response = await razorpay.orders.create(options)
-    console.log(response)
-
-    try {
-      console.log("number: " + req.body.number)
-      await pb.records.create('payments', {
-        user: userId,
-        package: Package.id,
-        orderId: response.id,
-        amount: response.amount,
-        currency: response.currency,
-        status: "pending",
-      })
-      //after storing order details sends ifo to client
-      res.json({
-        id: response.id,
-        currency: response.currency,
-        amount: response.amount
-      })
-
-    } catch (e) {
-      console.log(e)
-      res.status(200).json({
-        success: false, error: e
-      })
-    }
-
-
-  } catch (error) {
-    console.log(error)
-    res.status(200).json({
-      success: false, error: error
+	if (digest === req.headers['x-razorpay-signature']) {
+		console.log('request is legit')
+		// process it
+		
+try {
+//  console.log(req.body.payload.payment.entity)
+    const paymentArray = await pb.records.getFullList('payments', 1 /* batch size */, {
+    filter: 'orderId = req.body.payload.payment.entity.order_id'
+});
+    const payment = paymentArray[0]
+    console.log(payment)
+    const paymentUpdate = pb.records.update('payments', payment.id, {
+    status: "successfull",
+    payload: req.body
+});
+    
+    const userUpdate = pb.users.update(payment.user, {
+    
+});
+    .updateOne({orderId:req.body.payload.payment.entity.order_id}, {$set:{
+      payment: "successfull",
+      endedOn: new Date(),
+      rezorpayPayload: req.body
+    }});
+    
+    await Promise.all([userUpdate, paymentUpdate]).then(() => {
+      console.log(paymentUpdate, userUpdate)
+      res.json({ status: 'ok' })
     })
-  }
+    
+} catch (e) {
+  console.log(e)
+}
+    
+    
+    }	else {
+		// pass it
+		 return res.status(404).json()
+    }
+	}
+
+	
+ else return res.status(404).json()
 });
 
 export default router;
