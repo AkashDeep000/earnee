@@ -13,7 +13,7 @@ export default function About() {
 About Us
       </h2>
       <p className="text-slate-700 px-12 py-4 text-lg max-w-[60ch] ">
-Debashis halder and Deba Debnath , We are the founder and the owner of Earnee. We Belong to West Bengal. We are an Online Business Coach & trained More than 500+ students and They All Are Growing so Well in Online Field. We know the Depth of Online Business and our Hooks are amazing to Sell Stuff Online.We have Sold Stuff online More Than 1 lakh rs.
+Sourav Das, Debashis halder and Deba Debnath , We are the founder and the owner of Earnee. We Belong to West Bengal. We are an Online Business Coach & trained More than 500+ students and They All Are Growing so Well in Online Field. We know the Depth of Online Business and our Hooks are amazing to Sell Stuff Online.We have Sold Stuff online More Than 1 lakh rs.
       <br />
 Our Platform Earnee was established on  21September 2022 in West Bengal, south 24 parganas , It is an educational platform . The main purpose of our platform is to generate real Online profitable results for young and aspiring Online Business Entrepreneurs with a complete and comprehensive platform.
         <br />
