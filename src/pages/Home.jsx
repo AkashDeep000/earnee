@@ -125,7 +125,7 @@ return (
 
 
 <div className="text-2xl font-bold  text-slate-700 text-transparent bg-clip-text bg-clip-text bg-gradient-to-l from-purple-500 to-pink-600">
-<span>₹<span/>{el.price} <p className="text-sm">
+<span>₹</span>{el.price} <p className="text-sm">
 (for limited time)
 </p>
 </div>
