@@ -7,7 +7,7 @@ import {
   useNavigate
 } from "react-router-dom";
 import {
-  useState
+  useState, useEffect
 } from "react";
 import Spinner from "@/components/utils/Spinner";
 import useInviteStore from "@/store/inviteStore";
@@ -20,6 +20,12 @@ import pb from '@/pb';
 
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (pb.authStore.isValid) {
+      navigate("/dashboard")
+    }
+  },[])
   const [loginState,
     setLoginState] = useState("idle");
   const [errorMessage,
@@ -30,7 +36,7 @@ const LoginForm = () => {
   const [isPassShow,
     setIsPassShow] = useState(false);
 
-  const navigate = useNavigate();
+  
   const handleLogin = async (values) => {
     setLoginState("processing");
     try {
@@ -48,12 +54,12 @@ const LoginForm = () => {
     } catch (e) {
       console.log(e);
       setLoginState("failed");
-   /*   if (e.response.data.message) {
-        setErrorMessage(e.response.data.message);
+      if (e.data.message) {
+        setErrorMessage(e.data.message);
         console.log("failed");
-        console.log(e.response.data);
+        console.log(e.data);
         return;
-      } */
+      }
       setErrorMessage("Something went wrong");
     };
   };

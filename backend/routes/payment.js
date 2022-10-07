@@ -16,10 +16,15 @@ router.post('/', async (req, res, next) => {
     next(createError.Unauthorized())
   }
 
-  const Package = await pb.records.getOne('packages', packageId);
-console.log(Package)
+  const getPackage = pb.records.getOne('packages', packageId);
+  const getUser = pb.users.getOne(userId)
+  const [Package,
+    user] = await Promise.all([getPackage, getUser])
+
+  console.log(Package)
   const payment_capture = 1
-  const amount = Package.price
+  const amount = Package.price * 100
+  console.log(Package.price, amount)
   const currency = 'INR'
 
   //production
@@ -29,12 +34,12 @@ console.log(Package)
   //key_id: 'rzp_test_dhlZTnBnAibhF6',
   //	key_secret: 'V088sC8GxHmOjwdv9K3VLkIn'
   const razorpay = new Razorpay({
-    key_id: 'rzp_test_dhlZTnBnAibhF6',
-    key_secret: 'V088sC8GxHmOjwdv9K3VLkIn'
+    key_id: 'rzp_test_AdeXrqlpU8vmbK',
+    key_secret: 'iCkvoMc4VtXCtf5NaDZ1fh2A'
   })
 
   const options = {
-    amount: amount * 100,
+    amount,
     currency,
     receipt: uid(16),
     notes: {
@@ -48,15 +53,20 @@ console.log(Package)
     console.log(response)
 
     try {
-      console.log("number: " + req.body.number)
-      await pb.records.create('payments', {
-        user: userId,
+      
+      const paymentObj = {
+        profile: user.profile.id,
         package: Package.id,
         orderId: response.id,
         amount: response.amount,
         currency: response.currency,
         status: "pending",
-      })
+
+      }
+      if (user.profile.referBy) {
+        Package.referBy = user.profile.referBy
+      }
+      await pb.records.create('payments', paymentObj)
       //after storing order details sends ifo to client
       res.json({
         id: response.id,

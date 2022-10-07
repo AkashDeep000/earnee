@@ -2,18 +2,21 @@ import DashboardHeader from "@/components/DashboardHeader";
 import BottomBar from "@/components/BottomBar";
 import SideBar from "@/components/SideBar";
 import { Outlet, useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import pb from "@/pb";
 import { useEffect } from "react";
 
 function Dashboard() {
-  const [cookies] = useCookies(["accessToken"]);
+  const auth = pb.authStore
+  console.log(JSON.stringify(auth))
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (!cookies.accessToken) {
+    const isLogin = pb.authStore.isValid
+    
+    if (!isLogin) {
       navigate("/signup");
     }
-  }, [cookies.accessToken]);
+  }, []);
 
   return (
     <>

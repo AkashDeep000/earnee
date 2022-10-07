@@ -11,57 +11,78 @@ import createError from "http-errors";
 
 router.post('/', async (req, res, next) => {
   const secret = process.env.PASSWORD
-	console.log(req.body)
+  console.log(req.body)
 
-	const shasum = crypto.createHmac('sha256', secret)
-	shasum.update(JSON.stringify(req.body))
-	const digest = shasum.digest('hex')
- 
-	console.log(digest, req.headers['x-razorpay-signature'])
+  const shasum = crypto.createHmac('sha256', secret)
+  shasum.update(JSON.stringify(req.body))
+  const digest = shasum.digest('hex')
 
-	if (digest === req.headers['x-razorpay-signature']) {
-		console.log('request is legit')
-		// process it
-		
-try {
-//  console.log(req.body.payload.payment.entity)
-    const paymentArray = await pb.records.getFullList('payments', 1 /* batch size */, {
-    filter: 'orderId = req.body.payload.payment.entity.order_id'
-});
-    const payment = paymentArray[0]
-    console.log(payment)
-    const paymentUpdate = pb.records.update('payments', payment.id, {
-    status: "successfull",
-    payload: req.body
-});
-    
-    const userUpdate = pb.users.update(payment.user, {
-    
-});
-    .updateOne({orderId:req.body.payload.payment.entity.order_id}, {$set:{
-      payment: "successfull",
-      endedOn: new Date(),
-      rezorpayPayload: req.body
-    }});
-    
-    await Promise.all([userUpdate, paymentUpdate]).then(() => {
-      console.log(paymentUpdate, userUpdate)
-      res.json({ status: 'ok' })
+  console.log(digest, req.headers['x-razorpay-signature'])
+
+  if (digest === req.headers['x-razorpay-signature']) {
+    console.log('request is legit')
+    // process it
+
+    try {
+      //  console.log(req.body.payload.payment.entity)
+
+      const paymentArray = await pb.records.getFullList('payments', 1, {
+        filter: `(orderId='${req.body.payload.payment.entity.order_id}')`,
+        expand: 'package,profile'
+      });
+      const payment = paymentArray[0]
+
+      console.log(payment)
+      const paymentUpdate = pb.records.update('payments', payment.id, {
+        status: "successfull",
+        payload: req.body
+      });
+
+
+      const referUpdateFn = async () => {
+        console.log('referedId', payment['@expand'].profile.referedBy)
+        if (!payment['@expand'].profile.referedBy) return
+
+        const referArray = await pb.records.getFullList('refers', 1, {
+          filter: `(referedBy='${payment['@expand'].profile.referedBy}' && referedTo='${payment['@expand'].profile.id}')`
+        });
+        console.log("referArray", referArray)
+        const refer = referArray[0]
+        const referUpdate = await pb.records.update('refers', refer.id, {
+          commission1: payment['@expand'].package.commission1,
+          commission2: payment['@expand'].package.commission2,
+          package: payment.package,
+          payment: payment.id,
+        });
+      }
+      const referUpdate = referUpdateFn()
+      const userUpdate = pb.records.update("profiles", payment.profile, {
+        activePackage: payment.package,
+      });
+
+
+
+      await Promise.all([userUpdate, referUpdate, paymentUpdate])
+      .catch(err => {
+      return res.status(404).json()
+      throw err
     })
-    
-} catch (e) {
-  console.log(e)
-}
-    
-    
-    }	else {
-		// pass it
-		 return res.status(404).json()
-    }
-	}
+      .then(() => {
+        //  console.log(paymentUpdate, userUpdate)
+        res.json({
+          status: 'ok'
+        })
+      })
 
-	
- else return res.status(404).json()
+    } catch (e) {
+      console.log(e)
+    }
+
+
+  } else {
+    // pass it
+    return res.status(404).json()
+  }
 });
 
 export default router;

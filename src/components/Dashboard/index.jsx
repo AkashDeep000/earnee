@@ -6,129 +6,92 @@ import {
   Link
 } from "react-router-dom";
 import useUserStore from "@/store/userStore";
+import pb from "@/pb"
 
 export default function Dashboard() {
-  
-  const user = useUserStore((state) => state.user);
+
+  const user = pb.authStore.model
+
   const {
-    data: groups,
-    isLoading: isGroupLoading,
-    isError: isGroupError,
-    error: groupsError,
-  } = useQuery(["groups-minimal"], () =>
-    listGroupsMinimal({
-      token: cookies.accessToken
+    data,
+    isLoading,
+    isError,
+    error,
+  } = useQuery(["data-minimal"], () =>
+    pb.records.getOne("packages", user?.profile.activePackage, {
+      expand: 'courses, courses.videos'
     })
   );
 
-  const {
-    data: transactions,
-    isLoading: isTransactionsLoading,
-    isError: isTransactionsError,
-    error: transactionsError,
-  } = useQuery(["transactions"], () =>
-    listTransactions({
-      token: cookies.accessToken
-    })
-  );
 
-  const profileImage = (data) => {
-    if (data.profileImage) {
-      return data.profileImage;
-    }
-    switch (data.category) {
-    case "trip":
-      return "/images/trip.png";
-
-    case "home":
-      return "/images/home.png";
-
-    case "office":
-      return "/images/chair.png";
-
-    case "sport":
-      return "/images/sport.png";
-
-    default:
-      return "/images/group.png";
-    }
-  };
+  console.log(data)
 
   return (
     <>
     <div className="px-2 w-full py-2 overflow-x-scroll">
         <div className="p-4 w-full grid bg-white rounded-lg">
           <p className="text-gray-500 font-semibold font-ubuntu py-2">
-            Hi {user?.name?.split(" ", 2)[0]}
+            Hi {user?.profile?.name?.split(" ", 2)[0]}
     </p>
           <p className="text-gray-700 font-semibold mb-3">
-            Simplify Bill Split
+            Learn To Make Ultimate Income
     </p>
-          <div className="bg-orange-100 relative w-full aspect-[880/442]">
+          <div className="bg-orange-100 relative w-full aspect-[1080/460]">
             <img
-      className="border border-2 border-orange-50 absolute top-[-.5rem] right-[-.5rem] w-full"
-      src="/images/simplify.jpg"
+      className="border border-2 border-orange-100 absolute top-[-.5rem] right-[-.5rem] w-full shadow-sm"
+      src="/banner/1.jpg"
       />
     </div>
     </div>
-        {isGroupLoading || isTransactionsLoading ? (
+        {isLoading ? (
       <center className="py-4">Loading...</center>
-    ): isGroupError || isTransactionsError ? (
+    ): isError ? (
       <center className="py-4">Something went wrong</center>
     ): (
       <>
-      <div className="p-3 pt-6  text-gray-800 flex justify-between">
-              <p className="font-semibold">
-Groups
+      <div className="p-1 pt-6  text-gray-800">
+            <p className="text-md font-semibold font-ubuntu text-gray-800 pb-2 pl-3">
+Courses
       </p>
-              <Link to="/dashboard/groups" className="">
-                See All
-              </Link>
-      </div>
-      {
-        groups.length <= 0 ? (
-          <div className="border border-2 border-dotted p-5 px-8 text-center text-slate-700">
-                There is no group please create one
-          </div>
-        ): null
-      } < div className = "grid grid-cols-3 px-.5 gap-2" >
-      {
-        groups.map((group, index) => {
-          if (index > 2) {
-            return null;
-          }
+      <div className="grid gap-4">
+      {data["@expand"]?.courses?.map((course, index) => {
           return (
-            <Link key={group.id} to={`/dashboard/groups/${group.id}`}>
-                    <div className="bg-white rounded-lg p-[10%] text-center">
-                      <div className="bg-orange-50 m-[15%] p-[15%] rounded-full">
-                        <img className="w-full" src={profileImage(group)} />
+            <div className="bg-white shadow">
+               <div className="bg-rose-100 text-gray p-3">
+               {`${index+1}. ${course.name}`}
             </div>
-                      <p className="line-clamp-1 text-slate-700 mb-3">
-                        {group.name}
-            </p>
-            </div>
-                  </Link>
-        );
-        })} < /div> < div className = "p-3 pt-6  text-gray-800 flex justify-between" > < p className = "font-semibold" >
-    Recent Transactions < /p> < Link to = "/dashboard/transactions" className = "" >
-    See All < /Link> < /div >
-    {
-      groups.length <= 0 ? (
-        <div className="border border-2 border-dotted p-5 px-8 text-center text-slate-700">
-                There is no transactions to show
+               <div>
+               {course["@expand"].videos?.map((video, index) => {
+                const img = pb.records.getFileUrl(video, video.thumbnail, {
+                  'thumb': '256x0'
+                })
+                console.log(img)
+                return (
+                  <>
+                  <div className="grid grid-cols-[auto_1fr] gap-3 content-center">
+                 <img className="w-32" src={img} />
+                 <div>
+                 <p className="p-2">
+                 {video.name}
+                  </p>
+                  </div>
+                </div>
+                {
+                  index < (course["@expand"].videos.length - 1) && <hr className="m-2" />
+              } < />
+              )
+
+            })
+
+            }
+          </div>
         </div>
-      ): null
-    } < div className = "grid gap-4" >
-    {
-      transactions?.map((transaction, index) => {
-        if (index > 4) {
-          return null;
-        }
-        return (
-          null
-        );
-      })} < /div> < / >
-  )}
+        )
+      })}
+    </div>
+  </div> < />
+)
+  }
 </div> < />
-);
+)
 }

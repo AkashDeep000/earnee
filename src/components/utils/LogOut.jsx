@@ -1,15 +1,14 @@
 import { useState } from "react";
-import { useCookies } from "react-cookie";
+import pb from "@/pb"
 import { Outlet, useNavigate } from "react-router-dom";
 
 export default function LogOut(props) {
   const { className, children } = props;
   const [isOpen, setIsOpen] = useState(false);
-  const [cookie, setCookie, removeCookie] = useCookies(["accessToken"]);
   const navigate = useNavigate();
 
   const logOutHandler = () => {
-    removeCookie("accessToken", { path: "/" });
+    pb.authStore.clear()
     navigate("/login");
   };
   const askConfirmation = () => {

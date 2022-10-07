@@ -20,6 +20,7 @@ import Privacy from "@/pages/Privacy";
 import About from "@/pages/About";
 import Login from "@/pages/Login";
 import Signup from "@/pages/Signup";
+import Payment from "@/pages/Payment";
 //import Invite from "@/pages/Invite";
 import Overview from "@/pages/Dashboard/Overview";
 
@@ -41,6 +42,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/payment" element={<Payment />} />
     {/*    <Route path="/invite/:groupId" element={<Invite />} />
 */}
         <Route path="/dashboard" element={<Dashboard />}>
