@@ -31,5 +31,5 @@ jobs:
           cd /home/ubuntu/earnee/code/
           sudo git pull https://${{ secrets.GIT_TOKEN }}:x-oauth-basic@github.com/AkashDeep000/earnee.git main
           cd /home/ubuntu/earnee/code/backend
-          sudo npm install --only=prod
+          sudo npm install --omit=dev
           pm2 restart app
