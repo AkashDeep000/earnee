@@ -61,7 +61,7 @@ Courses
                <div>
                {course["@expand"].videos?.map((video, index) => {
                 const img = pb.records.getFileUrl(video, video.thumbnail, {
-                  'thumb': '512x0'
+                  'thumb': '720x0'
                 })
 
                 return (
