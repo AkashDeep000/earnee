@@ -12,7 +12,7 @@ function Announcements() {
 
   useEffect(() => {
     setActiveNav("announcements");
-    setActiveHeaderTitle("Announcements");
+    setActiveHeaderTitle("News");
   }, []);
 
   return <></>;

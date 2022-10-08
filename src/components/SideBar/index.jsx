@@ -48,7 +48,7 @@ function BottomBar() {
       icon={AiFillNotification}
       link="./announcements"
       name="announcements"
-      activeHeaderTitle="Announcements"
+      activeHeaderTitle="News"
       />
           <Button
       icon={RiSettingsFill}

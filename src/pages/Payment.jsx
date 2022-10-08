@@ -190,7 +190,7 @@ const Payment = () => {
           <p className="">
     Price : {""}{pkg.price - (pkg.price*0.18)}
     <br />
-    GST : {""}{pkg.price*0.18}
+    GST : {""}{pkg.price*0.18}(18%)
         </p>
         <hr />
       <p className="text-indigo-500 text-lg">
