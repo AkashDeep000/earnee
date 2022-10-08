@@ -1,16 +1,18 @@
 //import Hexagone from "@/components/utils/Hexagone";
 import {
   HiHome,
-  HiUserGroup,
-  HiPlusSm
+  HiUserGroup
 } from "react-icons/hi";
 import {
-  RiBillFill,
   RiSettingsFill
 } from "react-icons/ri";
 import {
-  BsFillHexagonFill
-} from "react-icons/bs";
+  IoWallet
+} from "react-icons/io5";
+import {
+  AiFillNotification
+} from "react-icons/ai";
+
 import Button from "./Button";
 import {
   Link,
@@ -31,16 +33,22 @@ function BottomBar() {
       />
           <Button
       icon={HiUserGroup}
-      link="./groups"
-      name="groups"
-      activeHeaderTitle="Groups"
+      link="./refers"
+      name="refers"
+      activeHeaderTitle="Refers"
       />
 
           <Button
-      icon={RiBillFill}
-      link="./transactions"
-      name="transactions"
-      activeHeaderTitle="Transactions"
+      icon={IoWallet}
+      link="./wallet"
+      name="wallet"
+      activeHeaderTitle="Wallet"
+      />
+                <Button
+      icon={AiFillNotification}
+      link="./announcements"
+      name="announcements"
+      activeHeaderTitle="Announcements"
       />
           <Button
       icon={RiSettingsFill}

@@ -24,22 +24,20 @@ export default function Dashboard() {
   );
 
 
-  console.log(data)
+  //  console.log(data)
 
   return (
     <>
     <div className="px-2 w-full py-2 overflow-x-scroll">
-        <div className="p-4 w-full grid bg-white rounded-lg">
-          <p className="text-gray-500 font-semibold font-ubuntu py-2">
-            Hi {user?.profile?.name?.split(" ", 2)[0]}
+        <div className="p-2 w-full grid bg-white/0 rounded-lg text-center">
+          <p className="text-gray-800 text-3xl font-semibold font-ubuntu py-2 pb-4">
+            Hi {user?.profile?.name?.split(" ", 2)[0]}!
     </p>
-          <p className="text-gray-700 font-semibold mb-3">
-            Learn To Make Ultimate Income
-    </p>
-          <div className="bg-orange-100 relative w-full aspect-[1080/460]">
+
+          <div className="">
             <img
-      className="border border-2 border-orange-100 absolute top-[-.5rem] right-[-.5rem] w-full shadow-sm"
-      src="/banner/1.jpg"
+      className="aspect-[1009/555] px-4 w-full"
+      src="/banner/dashboard2.png"
       />
     </div>
     </div>
@@ -50,14 +48,14 @@ export default function Dashboard() {
     ): (
       <>
       <div className="p-1 pt-6  text-gray-800">
-            <p className="text-md font-semibold font-ubuntu text-gray-800 pb-2 pl-3">
+            <p className="text-lg font-semibold font-ubuntu text-gray-800 pb-2 pl-2">
 Courses
       </p>
       <div className="grid gap-4">
       {data["@expand"]?.courses?.map((course, index) => {
           return (
-            <div className="bg-white shadow">
-               <div className="bg-rose-100 text-gray p-3">
+            <div className="bg-slate-100 rounded shadow">
+               <div className="rounded-t  bg-gradient-to-l from-indigo-500 to-purple-500 text-white p-3 font-semibold">
                {`${index+1}. ${course.name}`}
             </div>
                <div>
@@ -65,32 +63,36 @@ Courses
                 const img = pb.records.getFileUrl(video, video.thumbnail, {
                   'thumb': '256x0'
                 })
-                console.log(img)
+
                 return (
                   <>
-                  <div className="grid grid-cols-[auto_1fr] gap-3 content-center">
-                 <img className="w-32" src={img} />
+                  <div className="grid content-center p-1.5">
+                  <div className="bg-white rounded shadow-sm">
+                 <img className="rounded-t w-full border-b" src={img} />
                  <div>
-                 <p className="p-2">
+                 <p className="p-2 text-center font-semibold text-gray-800">
                  {video.name}
                   </p>
                   </div>
+                  </div>
                 </div>
                 {
+                  /*
                   index < (course["@expand"].videos.length - 1) && <hr className="m-2" />
-              } < />
+              */
+                } < />
               )
 
-            })
+              })
 
-            }
+              }
+            </div>
           </div>
-        </div>
         )
-      })}
-    </div>
-  </div> < />
-)
+        })}
+      </div>
+    </div> < />
+  )
   }
 </div> < />
 )

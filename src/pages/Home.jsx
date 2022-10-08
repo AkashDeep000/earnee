@@ -62,8 +62,8 @@ function Home() {
         paddingTop: window.innerWidth * 800 / 1920
       }}
       className="p-4 md:p-[5%]">
-    <div className="text-center mt-4 grid gap-2 md:grid-cols-3">
-    <div className="grid place-items-center gap-4 py-10 px-5">
+    <div className="text-center mt-4 grid md:grid-cols-3">
+    <div className="grid place-items-center gap-4 py-10 px-5 bg-white/60">
         <img src="/icons/cheak-list.png" />
         <p className="text-lg font-semibold">
         Step 1 - Enroll
@@ -75,7 +75,7 @@ function Home() {
         Step 2 - Learn & Implement
       </p>
     </div>
-    <div className="grid place-items-center gap-4 py-10 px-5">
+    <div className="grid place-items-center gap-4 py-10 px-5 bg-white/60">
         <img src="/icons/cheak-list.png" />
         <p className="text-lg font-semibold">
         Step 3 - Success & Earning

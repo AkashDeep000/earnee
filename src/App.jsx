@@ -12,6 +12,9 @@ import {
   ReactQueryDevtools
 } from "@tanstack/react-query-devtools";
 import Dashboard from "@/pages/Dashboard";
+import Refers from "@/pages/Dashboard/Refers";
+import Wallet from "@/pages/Dashboard/Wallet";
+import Announcements from "@/pages/Dashboard/Announcements";
 import Home from "@/pages/Home";
 import Contact from "@/pages/Contact";
 import Terms from "@/pages/Terms";
@@ -48,6 +51,9 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="" element={<Overview />} />
 
+          <Route path="refers" element={<Refers />} />
+          <Route path="wallet" element={<Wallet />} />
+          <Route path="announcements" element={<Announcements />} />
           <Route path="settings" element={<Settings />} />
         </Route>
         <Route

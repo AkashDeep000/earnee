@@ -1,20 +1,21 @@
 import useActiveHeaderTitleStore from "@/store/activeHeaderTitle";
 import useActiveNav from "@/store/activeNav";
-import Transactions from "@/components/Transactions";
 import { useEffect } from "react";
 
-function TransactionsPage() {
+
+function Announcements() {
+  
   const setActiveHeaderTitle = useActiveHeaderTitleStore(
     (state) => state.setActiveHeaderTitle
   );
   const setActiveNav = useActiveNav((state) => state.setActiveNav);
 
   useEffect(() => {
-    setActiveNav("transactions");
-    setActiveHeaderTitle("Transactions");
+    setActiveNav("announcements");
+    setActiveHeaderTitle("Announcements");
   }, []);
 
-  return <Transactions />;
+  return <></>;
 }
 
-export default TransactionsPage;
+export default Announcements;

@@ -1,8 +1,7 @@
 //import Hexagone from "@/components/utils/Hexagone";
 import {
   HiOutlineHome,
-  HiOutlineUserGroup,
-  HiPlusSm
+  HiOutlineUserGroup
 } from "react-icons/hi";
 import {
   RiBillLine,
@@ -11,6 +10,10 @@ import {
 import {
   IoWalletOutline
 } from "react-icons/io5";
+import {
+  AiOutlineNotification
+} from "react-icons/ai";
+
 import Button from "./Button";
 import {
   Link,
@@ -68,6 +71,7 @@ function BottomBar() {
       />
           <Button icon={HiOutlineUserGroup} link="./refers" name="refers" />
           <Button icon={IoWalletOutline} link="./wallet" name="wallet" />
+          <Button icon={AiOutlineNotification} link="./announcements" name="announcements" />
           <Button icon={RiSettingsLine} link="./settings" name="settings" />
     </div>
     </div> < />

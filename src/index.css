@@ -10,7 +10,7 @@
     @apply box-border;
   }
   body {
-    @apply bg-[rgb(244,246,250)] font-poppins;
+    @apply bg-[rgb(244,246,250)] font-poppins bg-[url('/background.jpg')];
   }
   button {
     @apply select-none;
