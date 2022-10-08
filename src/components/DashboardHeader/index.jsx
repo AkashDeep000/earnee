@@ -15,7 +15,7 @@ function DashboardHeader() {
   const user = useUserStore((state) => state.user);
 
   return (
-    <div className="z-50 px-2 py-1.5 bg-white flex items-center justify-between sticky top-0 shadow-sm">
+    <div className="z-50 px-2 py-1.5 bg-[url('/header.png')] bg-[length:100%_100%] flex items-center justify-between sticky top-0 shadow-sm">
       <div className="leftSideContainer flex items-center gap-2">
         {activeHeaderTitle ? (
       <>
