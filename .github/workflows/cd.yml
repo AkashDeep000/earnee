@@ -20,6 +20,17 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
+    - uses: actions/checkout@v1
+    - name: Coping repo to vps
+      uses: easingthemes/ssh-deploy@main
+      env:
+          SSH_PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          ARGS: "-rltgoDzvO --delete"
+          SOURCE: "./"
+          REMOTE_HOST: ${{ secrets.HOST }}
+          REMOTE_USER: ${{ secrets.USERNAME }}
+          TARGET: "/home/ubuntu/earnee/code"
+          EXCLUDE: ""
     - name: Deploy using ssh
       uses: appleboy/ssh-action@master
       with:
@@ -28,10 +39,6 @@ jobs:
         key: ${{ secrets.PRIVATE_KEY }}
         port: 22
         script: |
-          sudo sh
-          cd /home/ubuntu/earnee/code
-          git pull origin master
-          git status
           cd /home/ubuntu/earnee/code/backend
-          npm install --only=prod
+          sudo npm install --only=prod
           pm2 restart app
