@@ -3,7 +3,7 @@ import {
   useState,
   useEffect
 } from 'react';
-
+import LogOut from "@/components/utils/LogOut";
 import {
   useSearchParams,
   useNavigate
@@ -160,21 +160,30 @@ const Payment = () => {
       <center>You have alredy puchased our package.<br />redirecting to dashboard...</center>:
       <div className="grid gap-2">
       <center className="text-indigo-500 text-lg font-semibold font-ubuntu"> Select your prefered package</center>
+      <div className="bg-orange-200 px-4 py-2 rounded-lg flex justify-between items-center gap-2">
+      <div className="text-sm">
+      <span className="">Logged in as: </span>
+            <span className="font-semibold">{user.email}</span>
+      </div>
+              <LogOut className="ml-2 w-14">
+          <span className="text-sm font-semibold text-red-500">Log Out</span>
+        </LogOut>
+      </div>
       {data.map((pkg) => {
-        const img = pb.records.getFileUrl(pkg, pkg.image, {
-          'thumb': '256x0'
-        })
-        return(
-          <div onClick={() => setSelectedPkg(pkg.id)} className={`grid grid-cols-[auto_1fr] items-center gap-4 p-3 shadow rounded ${selectedPkg === pkg.id && "border-2 border-indigo-500 bg-orange-50"}`}>
+          const img = pb.records.getFileUrl(pkg, pkg.image, {
+            'thumb': '256x0'
+          })
+          return(
+            <div onClick={() => setSelectedPkg(pkg.id)} className={`grid grid-cols-[auto_1fr] items-center gap-4 p-3 shadow rounded ${selectedPkg === pkg.id && "border-2 border-indigo-500 bg-orange-50"}`}>
         <img className="w-16" src={img} />
         <div>
         {pkg.name}
         <br />
         <p className="text-indigo-500">
         ₹{pkg.price - (pkg.price*0.18)}
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
       )})}
       <hr />
       {data.map((pkg) => {
