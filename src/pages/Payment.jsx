@@ -65,7 +65,18 @@ const Payment = () => {
   },
     [data])
 
-
+  useEffect(()=> {
+    if (user?.profile?.activePackage) {
+      const fn = async () => {
+        const delay = ms => new Promise(res => setTimeout(res, ms));
+        await delay(2000)
+        // alert("payment done")
+        navigate("/dashboard")
+      }
+      fn()
+    }
+  },
+    [user?.profile?.activePackage])
 
 
   const [isScriptLoading,
@@ -117,7 +128,7 @@ const Payment = () => {
           setIsScriptLoading("done")
           const delay = ms => new Promise(res => setTimeout(res, ms));
           await delay(5000)
-          alert("payment done")
+          // alert("payment done")
           navigate("/dashboard")
 
           /*
@@ -146,7 +157,7 @@ const Payment = () => {
         {isLoading ?
       <center>loading package...</center>:
       user?.profile?.activePackage ?
-      <center>You have alredy puchased our package.</center>:
+      <center>You have alredy puchased our package.<br />redirecting to dashboard...</center>:
       <div className="grid gap-2">
       <center className="text-indigo-500 text-lg font-semibold font-ubuntu"> Select your prefered package</center>
       {data.map((pkg) => {
@@ -176,12 +187,12 @@ const Payment = () => {
           </p>
 
 
-        <p className="">
+          <p className="">
     Price : {""}{pkg.price - (pkg.price*0.18)}
     <br />
     GST : {""}{pkg.price*0.18}
-      </p>
-      <hr />
+        </p>
+        <hr />
       <p className="text-indigo-500 text-lg">
     Total : {""}{pkg.price}
       </p> < />
