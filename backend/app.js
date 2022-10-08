@@ -38,4 +38,20 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`🚀 @ http://localhost:${PORT}`));
+const server = app.listen(PORT, () => console.log(`🚀 @ http://localhost:${PORT}`));
+
+process.on('SIGINT', () => {
+  console.log("SIGINT recieved.")
+  server.close(() => {
+    console.log("Server is closed...")
+    process.exit(0)
+  })
+})
+
+process.on('SIGTERM', () => {
+  console.log("SIGTERM recieved.")
+  server.close(() => {
+    console.log("Server is closed...")
+    process.exit(0)
+  })
+})
