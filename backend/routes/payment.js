@@ -76,7 +76,7 @@ router.post('/', async (req, res, next) => {
 
     } catch (e) {
       console.log(e)
-      res.status(200).json({
+      res.status(400).json({
         success: false, error: e
       })
     }
@@ -84,7 +84,7 @@ router.post('/', async (req, res, next) => {
 
   } catch (error) {
     console.log(error)
-    res.status(200).json({
+    res.status(400).json({
       success: false, error: error
     })
   }

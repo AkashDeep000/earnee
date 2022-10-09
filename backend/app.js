@@ -6,7 +6,9 @@ dotenv.config();
 import cors from "cors"
 import payment from "./routes/payment.js"
 import paymentValidation from "./routes/paymentValidation.js"
-import api from "./routes/api.route.js"
+import userDetails from "./routes/userDetails.js"
+import withdraw from "./routes/withdraw.js"
+
 
 const app = express();
 app.use(cors());
@@ -24,6 +26,8 @@ app.get('/', async (req, res, next) => {
 
 app.use('/payment', payment);
 app.use('/payment-validation', paymentValidation);
+app.use('/user-details', userDetails);
+app.use('/withdraw', withdraw);
 
 app.use((req, res, next) => {
   next(createError.NotFound());

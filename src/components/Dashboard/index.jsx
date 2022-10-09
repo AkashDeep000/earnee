@@ -17,8 +17,8 @@ export default function Dashboard() {
     isLoading,
     isError,
     error,
-  } = useQuery(["data-minimal"], () =>
-    pb.records.getOne("packages", user?.profile.activePackage, {
+  } = useQuery(["videos"], () =>
+    pb.records.getOne("packages", user?.profile?.activePackage, {
       expand: 'courses, courses.videos'
     })
   );
@@ -59,7 +59,7 @@ Courses
                {`${index+1}. ${course.name}`}
             </div>
                <div>
-               {course["@expand"].videos?.map((video, index) => {
+               {course["@expand"]?.videos?.map((video, index) => {
                 const img = pb.records.getFileUrl(video, video.thumbnail, {
                   'thumb': '720x0'
                 })

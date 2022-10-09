@@ -22,6 +22,7 @@ import Refund from "@/pages/Refund";
 import Privacy from "@/pages/Privacy";
 import About from "@/pages/About";
 import Login from "@/pages/Login";
+import ResetPassword from "@/pages/ResetPassword";
 import Signup from "@/pages/Signup";
 import Payment from "@/pages/Payment";
 //import Invite from "@/pages/Invite";
@@ -44,6 +45,7 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/payment" element={<Payment />} />
     {/*    <Route path="/invite/:groupId" element={<Invite />} />

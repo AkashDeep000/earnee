@@ -7,7 +7,8 @@ import {
   useNavigate
 } from "react-router-dom";
 import {
-  useState, useEffect
+  useState,
+  useEffect
 } from "react";
 import Spinner from "@/components/utils/Spinner";
 import useInviteStore from "@/store/inviteStore";
@@ -25,7 +26,8 @@ const LoginForm = () => {
     if (pb.authStore.isValid) {
       navigate("/dashboard")
     }
-  },[])
+  },
+    [])
   const [loginState,
     setLoginState] = useState("idle");
   const [errorMessage,
@@ -36,11 +38,12 @@ const LoginForm = () => {
   const [isPassShow,
     setIsPassShow] = useState(false);
 
-  
+
   const handleLogin = async (values) => {
     setLoginState("processing");
     try {
-      const user = await pb.users.authViaEmail(formik.values.email, formik.values.password);
+      const user = await pb.users.authViaEmail(formik.values.email,
+        formik.values.password);
       console.log(user)
 
 
@@ -160,6 +163,9 @@ const LoginForm = () => {
         "Login"
       )}
         </button>
+          <Link className="mt-4 text-indigo-500 text-center" to="/reset-password">
+            forgot password ?
+          </Link>
         <p className="px-3 pt-5 text-slate-800 font-poppins">
           Don{"'"}t have an account?{"  "}
           <Link className="text-indigo-500" to="/signup">
