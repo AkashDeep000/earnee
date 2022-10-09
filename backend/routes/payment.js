@@ -20,7 +20,9 @@ router.post('/', async (req, res, next) => {
   const getUser = pb.users.getOne(userId)
   const [Package,
     user] = await Promise.all([getPackage, getUser])
-
+if (!user.id || user.profile.activePackage) {
+  next(createError.Unauthorized())
+}
   console.log(Package)
   const payment_capture = 1
   const amount = Package.price * 100

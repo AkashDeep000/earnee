@@ -31,6 +31,11 @@ router.post('/', async (req, res, next) => {
         expand: 'package,profile'
       });
       const payment = paymentArray[0]
+      
+      
+if (payment["@expand"].profile.activePackage) {
+  next(createError.Unauthorized())
+}
 
       console.log(payment)
       const paymentUpdate = pb.records.update('payments', payment.id, {

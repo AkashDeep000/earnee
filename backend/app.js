@@ -8,6 +8,7 @@ import payment from "./routes/payment.js"
 import paymentValidation from "./routes/paymentValidation.js"
 import userDetails from "./routes/userDetails.js"
 import withdraw from "./routes/withdraw.js"
+import signup from "./routes/signup.js"
 
 
 const app = express();
@@ -28,6 +29,7 @@ app.use('/payment', payment);
 app.use('/payment-validation', paymentValidation);
 app.use('/user-details', userDetails);
 app.use('/withdraw', withdraw);
+app.use('/signup', signup);
 
 app.use((req, res, next) => {
   next(createError.NotFound());
