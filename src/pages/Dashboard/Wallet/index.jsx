@@ -185,6 +185,12 @@ Monthly income
 Withdraws
     </p>
     <div className="grid gap-4 mt-2 mb-6">
+    {
+      !withdraws.length &&
+      <div className="border-dotted border-2 border-gray-500 p-4 text-gray-500 text-center">
+      You don{"'"}t have any withdraw.
+      </div>
+    }
     {withdraws.map((withdraw) => {
       return (
         <div className="bg-white rounded p-2.5 grid items-center grid-cols-[1fr_auto] text-slate-700">

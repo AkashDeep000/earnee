@@ -24,9 +24,14 @@ router.post('/:profileId', async (req, res, next) => {
     amount
   } = req.body
 
-  if (!profileId || !token) {
+  if (!profileId || !token || !amount) {
     next(createError.Unauthorized())
   }
+  
+  if (amount  % 1 !== 0) {
+    next(createError.Unauthorized())
+  }
+  
   try {
     client.authStore.save(token, {
       verified: false

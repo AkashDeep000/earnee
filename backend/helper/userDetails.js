@@ -10,7 +10,7 @@ const userDetails = async (profileId) => {
     expand: "refers, refers.referedTo, refers.referedTo.refers"
   });
   const withdraws = await pb.records.getFullList('withdraws', 9e18, {
-    filter: `profile="j8crwhiv59k931r" && errorMessage=""`,
+    filter: `profile="${profileId}" && errorMessage=""`,
   });
   //console.log(profile)
 
@@ -23,7 +23,7 @@ const userDetails = async (profileId) => {
   let monthDeposit = 0
   let monthTeamMember = 0
 
-  for (var i = 0; i < profile["@expand"]?.refers.length; i++) {
+  for (var i = 0; i < profile["@expand"]?.refers?.length; i++) {
     const refer = profile["@expand"].refers[i]
     totalDeposit += refer.commission1 || 0
     teamMember ++

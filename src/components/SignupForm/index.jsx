@@ -7,7 +7,8 @@ import {
   useNavigate
 } from "react-router-dom";
 import {
-  useState, useEffect
+  useState,
+  useEffect
 } from "react";
 import Spinner from "@/components/utils/Spinner";
 import useInviteStore from "@/store/inviteStore";
@@ -16,11 +17,11 @@ import {
   FiEyeOff
 } from "react-icons/fi"
 import pb from '@/pb';
-
+import axios from "axios"
 
 
 const SignupForm = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   useEffect(() => {
     if (pb.authStore.isValid) {
       navigate("/dashboard")
@@ -37,22 +38,28 @@ const SignupForm = () => {
   const [isPassShow,
     setIsPassShow] = useState(false);
 
-  
+
   const handleSignUp = async (values) => {
     setSignupState("processing");
 
     try {
-      const user = await pb.users.create({
-        email: formik.values.email,
-        password: formik.values.password,
-        passwordConfirm: formik.values.password,
+      const user = await axios({
+        method: "post",
+        url: `${import.meta.env.VITE_API_URL}/signup`,
+        data: {
+          email: formik.values.email,
+          password: formik.values.password,
+          name: formik.values.name,
+          phone: formik.values.phone,
+          referId: formik.values.referId,
+        },
       });
-      console.log(user)
-      const a = await pb.users.authViaEmail(formik.values.email, formik.values.password);
-      console.log("loged in", a)
-      const updatedProfile = await pb.records.update('profiles', a.user.profile.id, {
-        name: formik.values.name,
-      });
+
+
+      const a = await pb.users.authViaEmail(formik.values.email,
+        formik.values.password);
+      console.log("loged in",
+        a)
 
       if (invitedGroup) {
         navigate(`/invite/${invitedGroup}`);
@@ -64,8 +71,8 @@ const SignupForm = () => {
     } catch (e) {
       console.log(e);
       setSignupState("failed");
-      if (e.data.message) {
-        setErrorMessage(e.data.message);
+      if (e.response.data.error.message) {
+        setErrorMessage(e.response.data.error.message);
         console.log("failed");
         console.log(e.data);
         return;
@@ -83,6 +90,8 @@ const SignupForm = () => {
       name: "",
       email: "",
       password: "",
+      passwordConfirm: "",
+      phone: undefined,
     },
     validate: signupFormValidator,
     onSubmit: handleSignUp,
@@ -144,60 +153,140 @@ const SignupForm = () => {
     ): null}
     </div>
         <div className="m-3">
+          <label className="formInputLebel" htmlFor="phone">
+            Phone Number
+          </label>
+          <input
+      className={`formInput ${
+      formik.errors.phone ? "formInputError": ""
+      }`}
+      id="phone"
+      name="phone"
+      type="tel"
+      pattern="[0-9]{10}"
+      onChange={formik.handleChange}
+      value={formik.values.phone}
+      placeholder="Enter Phone Number"
+      />
+          {formik.errors.phone ? (
+      <div className="formInputErrorText">
+      {formik.errors.phone}
+      </div>
+    ): null}
+  </div>
+        <div className="m-3">
+          <label className="formInputLebel" htmlFor="email">
+            Referal ID (optional)
+          </label>
+          <input
+    className={`formInput ${
+    formik.errors.referId ? "formInputError": ""
+    }`}
+    id="referId"
+    name="referId"
+    type="text"
+    onChange={formik.handleChange}
+    value={formik.values.referId}
+    placeholder="Enter referal ID"
+    />
+          {formik.errors.referId ? (
+    <div className="formInputErrorText">
+      {formik.errors.referId}
+    </div>
+  ): null}
+</div>
+
+        <div className="m-3">
           <label className="formInputLebel" htmlFor="password">
             Password
           </label>
           <div className="relative">
             <input
-        className={`formInput ${
-        formik.errors.password ? "formInputError": ""
-        }`}
-        id="password"
-        name="password"
-        type={isPassShow ? "text": "password"}
-        onChange={formik.handleChange}
-        value={formik.values.password}
-        placeholder="Enter password"
-        />
+    className={`formInput ${
+    formik.errors.password ? "formInputError": ""
+    }`}
+    id="password"
+    name="password"
+    type={isPassShow ? "text": "password"}
+    onChange={formik.handleChange}
+    value={formik.values.password}
+    placeholder="Enter password"
+    />
             {isPassShow ? (
-        <FiEye
-          onClick={() => setIsPassShow(false)}
-          className="absolute text-slate-700 top-3 bottom-0 right-3 w-5 h-5"
-          />
-      ): (
-        <FiEyeOff
-          onClick={() => setIsPassShow(true)}
-          className="absolute text-slate-700 top-3 bottom-0 right-3 w-5 h-5"
-          />
-      )}
-    </div>
+    <FiEye
+      onClick={() => setIsPassShow(false)}
+      className="absolute text-slate-700 top-3 bottom-0 right-3 w-5 h-5"
+      />
+  ): (
+    <FiEyeOff
+      onClick={() => setIsPassShow(true)}
+      className="absolute text-slate-700 top-3 bottom-0 right-3 w-5 h-5"
+      />
+  )}
+</div>
 
           {formik.errors.password ? (
-      <div className="formInputErrorText">
+  <div className="formInputErrorText">
       {formik.errors.password}
-      </div>
-    ): null}
   </div>
+): null}
+</div>
+
+        <div className="m-3">
+          <label className="formInputLebel" htmlFor="password">
+            Confirm Password
+          </label>
+          <div className="relative">
+            <input
+  className={`formInput ${
+  formik.errors.passwordConfirm ? "formInputError": ""
+  }`}
+  id="passwordConfirm"
+  name="passwordConfirm"
+  type={isPassShow ? "text": "password"}
+  onChange={formik.handleChange}
+  value={formik.values.passwordConfirm}
+  placeholder="Enter password"
+  />
+            {isPassShow ? (
+  <FiEye
+    onClick={() => setIsPassShow(false)}
+    className="absolute text-slate-700 top-3 bottom-0 right-3 w-5 h-5"
+    />
+): (
+  <FiEyeOff
+    onClick={() => setIsPassShow(true)}
+    className="absolute text-slate-700 top-3 bottom-0 right-3 w-5 h-5"
+    />
+)}
+</div>
+
+          {formik.errors.passwordConfirm ? (
+<div className="formInputErrorText">
+      {formik.errors.passwordConfirm}
+</div>
+): null}
+</div>
         <button
-    disabled={signupState === "processing"}
-    className="px-3 py-2 font-poppins bg-indigo-500 text-white text-lg w-40 rounded justify-self-center my-2"
-    type="submit"
-    >
+disabled={signupState === "processing"}
+className="px-3 py-2 font-poppins bg-indigo-500 text-white text-lg w-40 rounded justify-self-center my-2"
+type="submit"
+>
           {signupState === "processing" ? (
-      <p>
+<p>
               Signin Up...
               <Spinner className="ml-2 w-6 h-6 text-indigo-200 animate-spin fill-white" />
-      </p>
-    ): (
-      "Sign Up"
-    )}
+</p>
+): (
+"Sign Up"
+)}
         </button>
         <p className="px-3 pt-5 text-slate-800 font-poppins">
           Already have an account?{"  "}
           <Link className="text-indigo-500" to="/login">
             Login
           </Link>
-  </p>
+</p>
 </form>
 </div>
 );

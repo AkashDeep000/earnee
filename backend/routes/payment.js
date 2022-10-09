@@ -15,7 +15,7 @@ router.post('/', async (req, res, next) => {
   if (!userId || !packageId) {
     next(createError.Unauthorized())
   }
-
+try {
   const getPackage = pb.records.getOne('packages', packageId);
   const getUser = pb.users.getOne(userId)
   const [Package,
@@ -50,7 +50,7 @@ if (!user.id || user.profile.activePackage) {
     payment_capture
   }
 
-  try {
+  
     const response = await razorpay.orders.create(options)
     console.log(response)
 

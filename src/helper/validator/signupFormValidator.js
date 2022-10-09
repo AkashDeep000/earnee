@@ -17,9 +17,18 @@ const validate = (values) => {
     !/(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,})/i.test(values.password)
   ) {
     errors.password =
-      "Weak Password (need more than 8 charecter and mix of lowercase and uppercase letters, nunbers and special charecters)";
+    "Weak Password (need more than 8 charecter and mix of lowercase and uppercase letters, nunbers and special charecters)";
   }
-  return errors;
-};
 
-export default validate;
+  if (values.passwordConfirm !== values.password) {
+    errors.passwordConfirm = "Not matched with Password";
+  }
+
+  if (!values.phone) {
+    errors.phone = "Required";
+  } else if (values.phone.length !== 10) {
+    errors.phone = "Not a valid  phone number";
+    return errors;
+  };
+}
+  export default validate;

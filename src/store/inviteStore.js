@@ -5,9 +5,9 @@ const useInviteStore = create(
   persist(
     (set, get) => ({
       invite: "",
-      addInvite: (groupId) => {
+      addInvite: (referId) => {
         set({
-          invite: groupId,
+          invite: referId,
         });
       },
       removeInvite: () => {

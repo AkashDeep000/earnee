@@ -127,7 +127,7 @@ const Payment = () => {
         handler: async function (response) {
           setIsScriptLoading("done")
           const delay = ms => new Promise(res => setTimeout(res, ms));
-          await delay(5000)
+          await delay(2000)
           // alert("payment done")
           navigate("/dashboard")
 
@@ -153,17 +153,17 @@ const Payment = () => {
   return (
     <>
     <div className="min-h-screen w-full grid place-items-center p-3">
-    <div className="bg-white w-[90%] max-w-[25rem] grid p-4">
+    <div className="bg-white w-[95%] max-w-[25rem] grid p-4">
         {isLoading ?
       <center>loading package...</center>:
       user?.profile?.activePackage ?
       <center>You have alredy puchased our package.<br />redirecting to dashboard...</center>:
       <div className="grid gap-2">
       <center className="text-indigo-500 text-lg font-semibold font-ubuntu"> Select your prefered package</center>
-      <div className="bg-orange-200 px-4 py-2 rounded-lg flex justify-between items-center gap-2">
-      <div className="text-sm break-words">
-      <span className="">Logged in as: </span>
-            <span className="font-semibold">{user.email}</span>
+      <div className="bg-orange-200 px-4 py-2 rounded-lg flex justify-between items-center gap-2 w-full break-all">
+      <div className="text-sm break-all">
+      <span className="break-all">Logged in as: </span>
+            <span className="font-semibold break-all">{user.email}</span>
       </div>
               <LogOut className="ml-2 w-14">
           <span className="text-sm font-semibold text-red-500">Log Out</span>
