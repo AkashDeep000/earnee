@@ -11,6 +11,7 @@ import {
   useEffect
 } from "react";
 import Spinner from "@/components/utils/Spinner";
+
 import {
   FiEye,
   FiEyeOff
@@ -32,7 +33,6 @@ const LoginForm = () => {
   const [errorMessage,
     setErrorMessage] = useState("");
 
-  const removeInvite = useInviteStore((state) => state?.removeInvite);
   const [isPassShow,
     setIsPassShow] = useState(false);
 
@@ -45,7 +45,7 @@ const LoginForm = () => {
       console.log(user)
 
 
-      
+
         navigate("/dashboard");
       
 
