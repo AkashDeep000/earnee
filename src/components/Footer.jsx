@@ -32,6 +32,11 @@ export default function Header() {
    Refund and Cancellations
       </button>
    </Link>
+   <a href="https://merchant.razorpay.com/policy/KQ0kUf3QKp7fKp/shipping">
+      <button className="p-2 font-bold">
+   Shipping & Delivery Policy
+      </button>
+   </a>
     </div>
     </div> < />
   )

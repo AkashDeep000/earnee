@@ -68,7 +68,7 @@ Courses
                   <>
                   <div className="grid content-center p-1.5">
                   <div className="bg-white rounded shadow-sm">
-                 <img className="rounded-t w-full border-b" src={img} />
+                 <img className="rounded-t w-full border-b aspect-video" src={img} />
                  <div>
                  <p className="p-2 text-center font-semibold text-gray-800">
                  {video.name}

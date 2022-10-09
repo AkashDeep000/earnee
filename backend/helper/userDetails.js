@@ -10,7 +10,7 @@ const userDetails = async (profileId) => {
     expand: "refers, refers.referedTo, refers.referedTo.refers"
   });
   const withdraws = await pb.records.getFullList('withdraws', 9e18, {
-    filter: `(profile='${profileId}'&&isPaid=true)`,
+    filter: `profile="j8crwhiv59k931r" && errorMessage=""`,
   });
   //console.log(profile)
 
@@ -69,7 +69,7 @@ const userDetails = async (profileId) => {
   }
 
   for (var k = 0; k < withdraws.length; k++) {
-    const withdraw = withdraw[k]
+    const withdraw = withdraws[k]
     totalWithdraw += withdraw.amount
   }
   const balance = totalDeposit - totalWithdraw
