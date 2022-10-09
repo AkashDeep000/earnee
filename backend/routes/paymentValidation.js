@@ -51,6 +51,7 @@ router.post('/', async (req, res, next) => {
         if (payment['@expand'].profile["@expand"]?.referedBy?.referedBy) {
           commission2 = payment['@expand'].package.commission2
         }
+        
         const referArray = await pb.records.getFullList('refers', 1, {
           filter: `(referedBy='${payment['@expand'].profile.referedBy}' && referedTo='${payment['@expand'].profile.id}')`
         });

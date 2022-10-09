@@ -21,6 +21,7 @@ import axios from "axios"
 
 
 const SignupForm = () => {
+  const invite = useInviteStore((state) => state?.invite);
   const navigate = useNavigate();
   useEffect(() => {
     if (pb.authStore.isValid) {
@@ -92,6 +93,7 @@ const SignupForm = () => {
       password: "",
       passwordConfirm: "",
       phone: undefined,
+      referId: invite || ""
     },
     validate: signupFormValidator,
     onSubmit: handleSignUp,

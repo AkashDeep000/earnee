@@ -62,7 +62,7 @@ function BottomBar() {
             </filter>
           </defs>
         </svg>
-        <div className="bg-white fixed bottom-0 w-full text-center py-3.5 rounded-t-2xl flex justify-evenly items-center shadow-sm">
+        <div className="bg-white fixed bottom-0 w-full text-center py-3.5 rounded-t-2xl flex justify-evenly items-center shadow-[0_0_.2rem_rgb(0,0,0,0.2)]">
           <Button
       icon={HiOutlineHome}
       link="."

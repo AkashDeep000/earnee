@@ -4,6 +4,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import ScrollToTop from "@/components/ScrollToTop";
 import {
   QueryClient,
   QueryClientProvider
@@ -25,6 +26,7 @@ import Login from "@/pages/Login";
 import ResetPassword from "@/pages/ResetPassword";
 import Signup from "@/pages/Signup";
 import Payment from "@/pages/Payment";
+import Invite from "@/pages/Invite";
 //import Invite from "@/pages/Invite";
 import Overview from "@/pages/Dashboard/Overview";
 
@@ -37,6 +39,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
     <Router>
+    <ScrollToTop>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -48,8 +51,8 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/payment" element={<Payment />} />
-    {/*    <Route path="/invite/:groupId" element={<Invite />} />
-*/}
+      <Route path="/invite/:referId" element={<Invite />} />
+
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="" element={<Overview />} />
 
@@ -69,6 +72,7 @@ There's nothing here!
       }
       />
       </Routes>
+      </ScrollToTop>
     </Router>
      </QueryClientProvider>
   );

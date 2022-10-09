@@ -56,7 +56,8 @@ function Wallet() {
     error: withdrawsError,
   } = useQuery(["withdraws"], () =>
     pb.records.getFullList("withdraws", 9e18, {
-      filter: `profile="${user.profile.id}"`
+      filter: `profile="${user.profile.id}"`,
+      sort: "-created"
     })
   );
 
@@ -190,52 +191,52 @@ Withdraws
       <div className="border-dotted border-2 border-gray-500 p-4 text-gray-500 text-center">
       You don{"'"}t have any withdraw.
       </div>
-    }
+      }
     {withdraws.map((withdraw) => {
-      return (
-        <div className="bg-white rounded p-2.5 grid items-center grid-cols-[1fr_auto] text-slate-700">
+        return (
+          <div className="bg-white rounded p-2.5 grid items-center grid-cols-[1fr_auto] text-slate-700">
       <div className="flex h-full">
         <div className="">
           <div className="bg-orange-50 rounded-full w-16 h-16 p-2">
             <img className="" src="/cash-withdrawal.png" />
-        </div>
+          </div>
 
           <p className="mt-1 text-center text-sm">
             {getDate(withdraw.created)}
-        </p>
-        </div>
+          </p>
+          </div>
         <div className="grid h-full items-center px-3">
           <p className="font-semibold text-sm text-slate-700 line-clamp-1">
             Balance Withdraw
-          </p>
+            </p>
           <p className="line-clamp-1 text-lg font-semibold text-indigo-500 font-ubuntu">
             ₹{withdraw.amount}
-          </p>
+            </p>
           {withdraw.errorMessage &&
-          <p className="line-clamp-1 text-sm text-red-500 bg-red-100 py-1 px-2 font-ubuntu rounded">
+            <p className="line-clamp-1 text-sm text-red-500 bg-red-100 py-1 px-2 font-ubuntu rounded">
             {withdraw.errorMessage}
-          </p>
-          }
-        </div>
-        </div>
+            </p>
+            }
+          </div>
+          </div>
 
       <div
-          className={`pr-4 font-ubuntu`}
-          >
+            className={`pr-4 font-ubuntu`}
+            >
        {withdraw.isPaid ?
-          <p className="text-green-500">
+            <p className="text-green-500">
 Successfull
-          </p>:
-          withdraw.errorMessage ?
-          <p className="text-red-500">
+            </p>:
+            withdraw.errorMessage ?
+            <p className="text-red-500">
           Failed
-          </p>:
-          "Pending"
-          }
+            </p>:
+            "Pending"
+            }
+          </div>
         </div>
-      </div>
-    )
-    })}
+      )
+      })}
   </div> < />
   }
     <Toaster />
