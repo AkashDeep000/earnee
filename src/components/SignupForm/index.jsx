@@ -61,11 +61,7 @@ const SignupForm = () => {
         formik.values.password);
       console.log("loged in",
         a)
-
-      if (invitedGroup) {
-        navigate(`/invite/${invitedGroup}`);
-        removeInvite();
-      } else {
+        
         navigate("/dashboard");
       }
 
