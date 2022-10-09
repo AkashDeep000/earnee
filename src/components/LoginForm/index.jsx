@@ -11,7 +11,6 @@ import {
   useEffect
 } from "react";
 import Spinner from "@/components/utils/Spinner";
-import useInviteStore from "@/store/inviteStore";
 import {
   FiEye,
   FiEyeOff
@@ -33,7 +32,6 @@ const LoginForm = () => {
   const [errorMessage,
     setErrorMessage] = useState("");
 
-  const invitedGroup = useInviteStore((state) => state?.invite);
   const removeInvite = useInviteStore((state) => state?.removeInvite);
   const [isPassShow,
     setIsPassShow] = useState(false);
@@ -47,12 +45,9 @@ const LoginForm = () => {
       console.log(user)
 
 
-      if (invitedGroup) {
-        navigate(`/invite/${invitedGroup}`);
-        removeInvite();
-      } else {
+      
         navigate("/dashboard");
-      }
+      
 
     } catch (e) {
       console.log(e);

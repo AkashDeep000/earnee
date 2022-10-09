@@ -63,7 +63,6 @@ const SignupForm = () => {
         a)
         
         navigate("/dashboard");
-      }
 
     } catch (e) {
       console.log(e);
