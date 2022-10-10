@@ -1,6 +1,6 @@
 import useActiveHeaderTitleStore from "@/store/activeHeaderTitle";
 import useActiveNav from "@/store/activeNav";
-import { useCookies } from "react-cookie";
+
 import { useEffect } from "react";
 import Dashboard from "@/components/Dashboard";
 
@@ -9,7 +9,7 @@ function Overview() {
     (state) => state.setActiveHeaderTitle
   );
   const setActiveNav = useActiveNav((state) => state.setActiveNav);
-  const [cookies, setCookie] = useCookies(["accessToken"]);
+  
 
   useEffect(() => {
     setActiveNav("home");
