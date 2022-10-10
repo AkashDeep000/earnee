@@ -16,6 +16,9 @@ import {
 } from "@tanstack/react-query";
 import axios from "axios"
 import pb from "@/pb"
+import toast, {
+  Toaster
+} from 'react-hot-toast';
 
 function Refers() {
   const user = pb.authStore.model
@@ -47,7 +50,7 @@ function Refers() {
   return (
     <>
     <div className="p-3 grid gap-2">
-    <div className="text-gray-800 bg-white p-3 py-6 grid gap-3 text-center aspect-video">
+    <div className="text-gray-800 bg-white p-3 py-6 grid gap-3 text-center aspect-video shadow">
     <p className="text-lg text-indigo-500 font-semibold">
 Your total team member
     </p>
@@ -62,7 +65,7 @@ Your total team member
       </p>
       }
     </div>
-      <div className="text-gray-800 bg-white p-3 py-5 overflow-x-auto">
+      <div className="text-gray-800 bg-white p-3 py-5 overflow-x-auto shadow">
     <p className="text-lg text-center text-indigo-500 font-semibold">
 Add new member to your team
       </p>
@@ -70,14 +73,18 @@ Add new member to your team
           <p className="p-3 mt-3 text-indigo-500">
 Share this link to invite new member
         </p>
-          <div className="p-2 m-3 bg-orange-100 overflow-x-auto">
+          <div className="p-2 m-3 bg-orange-100 overflow-x-auto shadow-[inset_0_0_0.5rem_rgb(0,0,0,0.1)]">
             {import.meta.env.VITE_APP_URL}/invite/{user.profile.id}
         </div>
           <button className="bg-indigo-500 text-white px-3 py-1 rounded mt-2 mb-4">
             <CopyToClipboard
             className="text-center"
             text={`${import.meta.env.VITE_APP_URL}/invite/${user.profile.id}`}
-            onCopy={() => setIsUrlCopied(true)}
+            onCopy={() => {
+            setIsUrlCopied(true)
+            toast.success("Invite link coppied successfully")
+            }
+            }
             >
               <span>
                 {isUrlCopied ? (
@@ -104,14 +111,18 @@ Copied
           <p className="p-3 text-indigo-500">
 Enter this referal code during new signup
         </p>
-          <div className="p-2 m-3 bg-orange-100 overflow-x-auto">
+          <div className="p-2 m-3 bg-orange-100 overflow-x-auto shadow-[inset_0_0_0.5rem_rgb(0,0,0,0.1)]">
             {user.profile.id.toUpperCase()}
         </div>
           <button className="bg-indigo-500 text-white px-3 py-1 rounded mt-2 mb-4">
             <CopyToClipboard
             className="text-center"
             text={user.profile.id.toUpperCase()}
-            onCopy={() => setIsCodeCopied(true)}
+            onCopy={() => {
+            setIsCodeCopied(true)
+            toast.success("Referal code coppied successfully")
+            }
+            }
             >
               <span>
                 {isCodeCopied ? (
@@ -132,7 +143,9 @@ Copied
           </button>
       </div>
     </div>
-  </div> < />
+  </div> 
+  <Toaster/>
+  < />
 );
 }
 

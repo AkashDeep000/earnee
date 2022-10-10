@@ -115,7 +115,7 @@ function Wallet() {
       isError || isWithdrawsError ?
       <center className="mt-4">Failed to load</center>:
       <>
-      <div className="mt-2 mb-1 bg-orange-100 rounded-lg">
+      <div className="mt-2 mb-1 bg-orange-100 rounded-lg shadow">
         <div className="grid grid-cols-[1fr_auto_1fr]">
           <div className="p-4">
             <p className="text-slate-600 mb-2">
@@ -154,7 +154,7 @@ Monthly income
       </div>
       </div>
       </div>
-      <form className="bg-white rounded mt-4 p-2">
+      <form className="bg-white rounded mt-4 p-2 shadow">
       <div className="grid grid-cols-[1fr_auto] gap-2">
 
       <input
@@ -194,7 +194,7 @@ Withdraws
       }
     {withdraws.map((withdraw) => {
         return (
-          <div className="bg-white rounded p-2.5 grid items-center grid-cols-[1fr_auto] text-slate-700">
+          <div className="bg-white rounded shadow p-2.5 grid items-center grid-cols-[1fr_auto] text-slate-700">
       <div className="flex h-full">
         <div className="">
           <div className="bg-orange-50 rounded-full w-16 h-16 p-2">

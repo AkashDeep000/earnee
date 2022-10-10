@@ -72,7 +72,7 @@ function Announcements() {
                     ["mp3", "aac", "wav", "m4a"].includes(type) ? <div className="p-2">
                 <audio className="m-[0_auto]" controls src={fileUrl}></audio>
                     </div>:
-                    ["mp4", "webm", "mkv", "mov"].includes(type) ? <video controls src={fileUrl} className="w-full aspect-video" preload="none" autoplay="none" />: <p className="p-2">
+                    ["mp4", "webm", "mkv", "mov"].includes(type) ? <video controls src={fileUrl} className="w-full aspect-video" preload="none" />: <p className="p-2">
                 File is not supported
                     </p>
                     }
