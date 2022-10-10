@@ -67,14 +67,14 @@ const SignupForm = () => {
     } catch (e) {
       console.log(e);
       setSignupState("failed");
-      if (e.response.data.error.message) {
+      if (e.response?.data?.error?.message) {
         setErrorMessage(e.response.data.error.message);
         console.log("failed");
         console.log(e.data);
-        return;
-      }
+      } else {
 
       setErrorMessage("Something went wrong");
+      }
     };
 
   };

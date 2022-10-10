@@ -28,7 +28,7 @@ const validate = (values) => {
     errors.phone = "Required";
   } else if (values.phone.length !== 10) {
     errors.phone = "Not a valid  phone number";
-    return errors;
   };
+  return errors;
 }
   export default validate;

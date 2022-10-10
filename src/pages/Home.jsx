@@ -56,6 +56,9 @@ function Home() {
       images={images}
       showBullets={true}
       showNavs={true}
+      autoPlay={true}
+      autoPlayDelay={1.5}
+      navSize={35}
       />
     <div
       style={ {

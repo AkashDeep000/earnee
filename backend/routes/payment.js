@@ -7,6 +7,8 @@ import {
 import Razorpay from 'razorpay'
 import pb from "../pb/index.js"
 import createError from "http-errors";
+import dotenv from 'dotenv'
+dotenv.config();
 
 router.post('/', async (req, res, next) => {
   const {
@@ -36,8 +38,8 @@ if (!user.id || user.profile.activePackage) {
   //key_id: 'rzp_test_dhlZTnBnAibhF6',
   //	key_secret: 'V088sC8GxHmOjwdv9K3VLkIn'
   const razorpay = new Razorpay({
-    key_id: 'rzp_test_AdeXrqlpU8vmbK',
-    key_secret: 'iCkvoMc4VtXCtf5NaDZ1fh2A'
+    key_id: process.env.RP_KEY,
+    key_secret: process.env.RP_SECRET
   })
 
   const options = {

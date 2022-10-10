@@ -19,12 +19,14 @@ router.post('/', async (req, res, next) => {
       name,
       phone,
     }
-
+    let currentRefers = []
     if (referId) {
       try {
         const referUser = await pb.records.getOne("profiles", referId.toLowerCase())
         updateData.referedBy = referUser.id
-      } catch {
+        currentRefers = referUser.refers
+      } catch(e) {
+        console.log(e)
         res.status(423).json({
           success: false, error: {
             message: "Wrong refer ID"
@@ -39,16 +41,16 @@ router.post('/', async (req, res, next) => {
       password,
       passwordConfirm: password,
     });
-    
-if (updateData.referedBy) {
-    const refer = await pb.records.create("refers", {
-      referedBy: updateData.referedBy,
-      referedTo: user.profile.id
-    })
-    await pb.records.update('profiles', updateData.referedBy, {
-      refers: refer.id
-    });
-}
+
+    if (updateData.referedBy) {
+      const refer = await pb.records.create("refers", {
+        referedBy: updateData.referedBy,
+        referedTo: user.profile.id
+      })
+      await pb.records.update('profiles', updateData.referedBy, {
+        refers: [refer.id, ...currentRefers]
+      });
+    }
     const updatedProfile = await pb.records.update('profiles', user.profile.id, updateData);
     res.send(updatedProfile)
 

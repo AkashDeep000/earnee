@@ -1,9 +1,0 @@
-# litestream.yaml
-dbs:
-  - path: /pb_data/data.db
-    replicas:
-      - type: s3
-        endpoint: https://MY_ACCOUNT_ID.r2.cloudflarestorage.com/
-        bucket: MY_BUCKET_NAME
-        access-key-id: MY_ACCESS_KEY
-        secret-access-key: MY_SECRET_ACCESS_KEY

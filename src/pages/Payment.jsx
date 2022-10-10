@@ -117,7 +117,7 @@ const Payment = () => {
 
 
       const options = {
-        key: 'rzp_test_AdeXrqlpU8vmbK',
+        key: import.meta.env.VITE_RP_KEY,
         currency: data.currency,
         amount: data.amount.toString(),
         order_id: data.id,
