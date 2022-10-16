@@ -149,7 +149,7 @@ Lifetime income
           <div className="w-0 h-full border border-dotted border-white border-4 border-r-0 y-3"></div>
           <div className="p-4 grid items-center">
             <p className="text-slate-600">
-Daily income
+Weekly income
         </p>
             <p className="text-indigo-500 text-xl font-bold font-ubuntu">
               {data.data.weekDeposit}

@@ -59,7 +59,7 @@ function App() {
         <Route path="/pay-details" element={<PayDetails />} />
         <Route path="/why-pay-direct" element={<WhyPayDirect />} />
       <Route path="/invite/:referId" element={<Invite />} />
-      <Route path="/video/:url" element={<video />} />
+      <Route path="/video/:url" element={<Video />} />
 
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="" element={<Overview />} />

@@ -59,7 +59,7 @@ function Settings() {
       accountNumber: updatedUser.profile.accountNumber,
       accountIFSC: updatedUser.profile.accountIFSC,
     },
-   validate: withdrawFormValidator,
+    validate: withdrawFormValidator,
     onSubmit: handleUpdate,
   });
 
@@ -83,9 +83,9 @@ function Settings() {
     <>
     <Toaster />
     <div className="p-2 grid gap-2">
-            <div className="text-gray-700 text-lg bg-white w-full border p-2">
+            <div className="text-gray-700 text-lg bg-white w-full border p-4">
     <div className="flex items-center justify-between">
-    <p className="text-indigo-500">
+    <p className="text-indigo-500 font-semibold">
           Bank details
     </p>
     <button
@@ -185,9 +185,9 @@ function Settings() {
 
 </div>
       <Link to="/reset-password">
-     <button className="w-full text-gray-700 text-lg bg-white w-full border px-2 py-4">  Reset Password </button>
+     <button className="w-full text-gray-700 text-lg bg-white w-full border px-2 py-4 font-semibold">  Reset Password </button>
       </Link>
-        <LogOut className="text-gray-700 text-lg bg-white w-full border px-2 py-4">
+        <LogOut className="text-gray-700 text-lg bg-white w-full border px-2 py-4 font-semibold">
           Log Out
         </LogOut>
 </div> < />

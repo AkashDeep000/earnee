@@ -66,6 +66,7 @@ Courses
 
                 return (
                   <>
+                  <Link to={`/video/${encodeURIComponent(video.url)}`}>
                   <div className="grid content-center p-1.5">
                   <div className="bg-white rounded shadow-sm">
                  <img className="rounded-t w-full border-b aspect-video" src={img} />
@@ -75,7 +76,8 @@ Courses
                   </p>
                   </div>
                   </div>
-                </div>
+                  </div>
+                </Link>
                 {
                   /*
                   index < (course["@expand"].videos.length - 1) && <hr className="m-2" />
