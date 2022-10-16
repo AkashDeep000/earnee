@@ -217,11 +217,15 @@ Copy
     )
   })}
   <div className="grid place-items-center">
+
   <a href={`upi://pay?pa=${bankDetails[0].upi}&am=${data.price}&pn=Earnee&tn=Earnee-Package-Subscription`}>
   <img
 
-    className="w-36 h-auto border" src="/upi.jpg" />
+    className="shadow-xl w-36 h-auto border" src="/upi.jpg" />
   </a>
+    <p className="text-gray-800 mt-2">
+Click above ↑ to pay
+  </p>
 </div>
   < p className = "my-2 text-sm items-center text-indigo-500 font-semibold" >
   Step 2: Submit payment proofs < /p> < label class = "block" > < span class = "m-2 text-sm" > Upload this page screenshoot < /span > < input
