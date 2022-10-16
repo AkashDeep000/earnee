@@ -30,19 +30,19 @@ Why we want this?
       <div className="grid gap-1">
       <div className="grid grid-cols-[auto_1fr] items-center">
       <p className="w-4 h-4 rounded bg-gradient-to-r to-pink-500 from-purple-500" />
-     <p className="ml-2">
+     <p className="ml-2 font-semibold">
 Screenshot of the next page
     </p>
     </div>
       <div className="grid grid-cols-[auto_1fr] items-center">
       <p className="w-4 h-4 rounded bg-gradient-to-r to-pink-500 from-purple-500" />
-     <p className="ml-2">
+     <p className="ml-2 font-semibold">
  Screenshot of your payment
       </p>
     </div>
       <div className="grid grid-cols-[auto_1fr] items-center">
       <p className="w-4 h-4 rounded bg-gradient-to-r to-pink-500 from-purple-500" />
-     <p className="ml-2">
+     <p className="ml-2 font-semibold">
  Send the screenshots -
       </p>
     </div>
@@ -51,7 +51,8 @@ Screenshot of the next page
 1
       </p>
      <p className="ml-2">
- To our telegram channel https://t.me/earneeofficial
+ To our telegram channel
+ {' '}<a className="text-indigo-500"href="https://t.me/earneeofficial">https://t.me/earneeofficial</a>
       </p>
     </div>
       <div className="grid grid-cols-[auto_1fr] ml-10">
