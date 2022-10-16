@@ -101,7 +101,7 @@ function Settings() {
           <label className="formInputLebel" htmlFor="upi">
             UPI id
           </label>
-          <input
+          <input readonly={editState === "editing" ? "false" : "readonly"}
         className={`formInput ${
         formik.errors.upi ? "formInputError": ""
         }`}
@@ -122,7 +122,7 @@ function Settings() {
           <label className="formInputLebel" htmlFor="accountName">
             Name of Account holder
           </label>
-          <input
+          <input readonly={editState === "editing" ? "readonly": "false"}
       className={`formInput ${
       formik.errors.accountName ? "formInputError": ""
       }`}
@@ -143,7 +143,7 @@ function Settings() {
           <label className="formInputLebel" htmlFor="accountNumber">
             Account Number
           </label>
-          <input
+          <input readonly={editState === "editing" ? "readonly": "false"}
       className={`formInput ${
       formik.errors.accountNumber ? "formInputError": ""
       }`}
@@ -164,7 +164,7 @@ function Settings() {
           <label className="formInputLebel" htmlFor="accountIFSC">
             Account IFSC code
           </label>
-          <input
+          <input readonly={editState === "editing" ? "readonly": "false"}
       className={`formInput ${
       formik.errors.accountIFSC ? "formInputError": ""
       }`}

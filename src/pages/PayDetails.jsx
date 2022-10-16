@@ -112,6 +112,7 @@ const Payment = () => {
       formData.append('screenshoot2', selectedFile2);
       formData.append('amount', data.price);
       formData.append('package', data.id);
+      formData.append('profile', user.id);
 
       console.log(formData)
       try {

@@ -6,6 +6,7 @@ dotenv.config();
 import cors from "cors"
 import payment from "./routes/payment.js"
 import paymentValidation from "./routes/paymentValidation.js"
+import payApprove from "./routes/payApprove.js"
 import userDetails from "./routes/userDetails.js"
 import withdraw from "./routes/withdraw.js"
 import signup from "./routes/signup.js"
@@ -27,6 +28,7 @@ app.get('/', async (req, res, next) => {
 
 app.use('/payment', payment);
 app.use('/payment-validation', paymentValidation);
+app.use('/pay-approve', payApprove);
 app.use('/user-details', userDetails);
 app.use('/withdraw', withdraw);
 app.use('/signup', signup);
