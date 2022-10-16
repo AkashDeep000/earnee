@@ -67,8 +67,7 @@ Screenshot of the next page
     <p className="text-center text-sm">
     Watch this video for registration process
     </p>
-    <div className="aspect-video w-full bg-gray-200">
-    </div>
+    <img className="aspect-video w-full bg-gray-200" src="/reg-video-thumb"/>
     </div>
     </p>
     <button onClick={() => navigate("/pay-details")} className="bg-gradient-to-l to-pink-500 from-purple-500 text-white px-5 py-2 rounded font-bold">
@@ -80,6 +79,7 @@ Why we take screenshots ?
 </div>
 </div>
 </div>
-</div> < />
+</div>
+ < />
 )
 }
