@@ -30,6 +30,7 @@ import PayStep from "@/pages/PayStep";
 import PayDetails from "@/pages/PayDetails";
 import WhyPayDirect from "@/pages/WhyPayDirect";
 import Invite from "@/pages/Invite";
+import Video from "@/pages/Video";
 //import Invite from "@/pages/Invite";
 import Overview from "@/pages/Dashboard/Overview";
 
@@ -58,6 +59,7 @@ function App() {
         <Route path="/pay-details" element={<PayDetails />} />
         <Route path="/why-pay-direct" element={<WhyPayDirect />} />
       <Route path="/invite/:referId" element={<Invite />} />
+      <Route path="/video/:url" element={<video />} />
 
         <Route path="/dashboard" element={<Dashboard />}>
           <Route path="" element={<Overview />} />

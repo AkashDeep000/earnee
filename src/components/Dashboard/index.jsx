@@ -37,7 +37,7 @@ export default function Dashboard() {
           <div className="">
             <img
       className="aspect-[1009/555] px-4 w-full"
-      src="/banner/dashboard2.png"
+      src="/banner.png"
       />
     </div>
     </div>
