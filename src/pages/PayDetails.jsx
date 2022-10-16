@@ -215,16 +215,24 @@ Copy
               </button>
       </div>
     )
-  })} < p className = "my-2 text-sm items-center text-indigo-500 font-semibold" >
+  })}
+  <div className="grid place-items-center">
+  <a href={`upi://pay?pa=${bankDetails[0].upi}&am=${data.price}&pn=Earnee&tn=Earnee-Package-Subscription`}>
+  <img
+
+    className="w-36 h-auto border" src="/upi.jpg" />
+  </a>
+</div>
+  < p className = "my-2 text-sm items-center text-indigo-500 font-semibold" >
   Step 2: Submit payment proofs < /p> < label class = "block" > < span class = "m-2 text-sm" > Upload this page screenshoot < /span > < input
   onChange = {() => {
-    setSelectedFile1(event.target.files[0])
-    if (event.target.files[0]) {
-      setIsSelectedFile1(true)
-    } else {
-      setIsSelectedFile1(false)
-    }
-  }}
+  setSelectedFile1(event.target.files[0])
+  if (event.target.files[0]) {
+    setIsSelectedFile1(true)
+  } else {
+    setIsSelectedFile1(false)
+  }
+}}
   type = "file" class = "block w-full text-sm text-slate-500
   file: mr-4 file: py-2 file: px-4
   file: rounded-full file: border-0
@@ -233,13 +241,13 @@ Copy
   hover: file: bg-violet-100
   " /> < /label> < label class = "block" > < span class = "text-sm m-2 pb" > Upload payment screenshoot < /span > < input
   onChange = {() => {
-    setSelectedFile2(event.target.files[0])
-    if (event.target.files[0]) {
-      setIsSelectedFile2(true)
-    } else {
-      setIsSelectedFile2(false)
-    }
-  }}
+  setSelectedFile2(event.target.files[0])
+  if (event.target.files[0]) {
+    setIsSelectedFile2(true)
+  } else {
+    setIsSelectedFile2(false)
+  }
+}}
   type = "file" class = "block w-full text-sm text-slate-500
   file: mr-4 file: py-2 file: px-4
   file: rounded-full file: border-0
@@ -249,19 +257,19 @@ Copy
   " /> < /label>
   {isSubmit && <p className="text-indigo-500">
 You have successfully submited payment proof wait until we verify your payment.
-  </p>
-  }
+</p>
+}
   < button onClick = { fileUpload } className = "mt-2 rounded bg-indigo-500 text-white px-3 py-2" >
   {
-  submitState === "loading" ?
-  <p>
+submitState === "loading" ?
+<p>
      Submiting..
                    <Spinner className="ml-2 w-6 h-6 text-indigo-200 animate-spin fill-white" />
-  </p>:
-  isSubmit ?
-  "Re-Submit":
-  "Submit"
-  } < /button> < /div >} < /div > < /div > < / >
+</p>:
+isSubmit ?
+"Re-Submit":
+"Submit"
+} < /button> < /div >} < /div > < /div > < / >
 )
 }
 
