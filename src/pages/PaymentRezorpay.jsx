@@ -12,14 +12,11 @@ import {
   useQuery
 } from "@tanstack/react-query";
 import pb from '@/pb';
-import usePkgStore from "@/store/pkgStore";
 
 const Payment = () => {
   let navigate = useNavigate();
-  const addPkg = usePkgStore((state) => state?.addPkg);
-  const pkg = usePkgStore((state) => state?.pkg);
-  
-  
+  const [count,
+    setCount] = useState(0);
   const currentUser = pb.authStore.model
   const [user,
     setUser] = useState(currentUser)
@@ -69,9 +66,6 @@ const Payment = () => {
     [data])
 
   useEffect(()=> {
-    if (pkg) {
-      navigate("/pay-details")
-    }
     if (user?.profile?.activePackage) {
       const fn = async () => {
         const delay = ms => new Promise(res => setTimeout(res, ms));
@@ -83,6 +77,78 @@ const Payment = () => {
     }
   },
     [user?.profile?.activePackage])
+
+
+  const [isScriptLoading,
+    setIsScriptLoading] = useState("false")
+
+  function loadScript(src) {
+    return new Promise((resolve) => {
+      const script = document.createElement('script')
+      script.src = src
+      script.onload = () => {
+        resolve(true)
+      }
+      script.onerror = () => {
+        resolve(false)
+      }
+      document.body.appendChild(script)
+    })
+  }
+
+  const subClicHandler = async () => {
+
+    setIsScriptLoading("true")
+
+    const RazorpayLoad = await loadScript("https://checkout.razorpay.com/v1/checkout.js")
+
+    if (RazorpayLoad) {
+      const res = await axios({
+        method: 'post',
+        url: `${import.meta.env.VITE_API_URL}/payment`,
+        data: {
+          userId: user.id,
+          packageId: selectedPkg
+        }
+      })
+      const data = res.data
+      console.log(data)
+      setIsScriptLoading("false")
+
+
+      const options = {
+        key: import.meta.env.VITE_RP_KEY,
+        currency: data.currency,
+        amount: data.amount.toString(),
+        order_id: data.id,
+        name: 'Earnee',
+        description: 'Thank you for purchasing our package.',
+        image: '/logo.png',
+        handler: async function (response) {
+          setIsScriptLoading("done")
+          const delay = ms => new Promise(res => setTimeout(res, ms));
+          await delay(2000)
+          // alert("payment done")
+          navigate("/dashboard")
+
+          /*
+				alert(response.razorpay_payment_id)
+				alert(response.razorpay_order_id)
+				alert(response.razorpay_signature)
+				*/
+
+        },
+
+        prefill: {
+          full_name: "",
+          email: user.email || "",
+          phone: ""
+        }
+      }
+      const paymentObject = new window.Razorpay(options)
+      paymentObject.open()
+    }
+  }
 
   return (
     <>
@@ -142,15 +208,15 @@ const Payment = () => {
     )}
 })}
     <br />
-    <button
-onClick={() => {
-addPkg(selectedPkg)
-navigate("/pay-step")
-}
-}
+    <button onClick={subClicHandler}
 className="bg-indigo-500 text-white px-2 py-1.5 text-lg rounded w-full">
-Buy Now
-
+      {isScriptLoading == "false" ?
+"Buy Now": isScriptLoading == "true" ?
+<div>
+Loading...
+</div>: isScriptLoading == "done" ?
+"Payment Successful🎊": null
+}
       </button>
 </div>
 }

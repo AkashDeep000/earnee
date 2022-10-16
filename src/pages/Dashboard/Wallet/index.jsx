@@ -17,8 +17,13 @@ import withdrawFormValidator from "@/helper/validator/withdrawFormValidator";
 import toast, {
   Toaster
 } from 'react-hot-toast';
+import {
+  Link,
+  useNavigate
+} from "react-router-dom";
 
 function Wallet() {
+  const navigate = useNavigate()
   const queryClient = useQueryClient()
 
   const getDate = (date) => {
@@ -69,6 +74,13 @@ function Wallet() {
 
 
   const handleWithdraw = async (values) => {
+    if (!user.profile.accountIFSC || !user.profile.accountNumber || !user.profile.accountName || !user.profile.upi) {
+      toast.error("Please add bank details to withdraw.")
+      const delay = ms => new Promise(res => setTimeout(res, ms));
+          await delay(1)
+      navigate("/dashboard/settings")
+      return
+    }
     setWithdrawState("processing");
     try {
       const withdraw = await axios({

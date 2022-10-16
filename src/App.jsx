@@ -26,6 +26,9 @@ import Login from "@/pages/Login";
 import ResetPassword from "@/pages/ResetPassword";
 import Signup from "@/pages/Signup";
 import Payment from "@/pages/Payment";
+import PayStep from "@/pages/PayStep";
+import PayDetails from "@/pages/PayDetails";
+import WhyPayDirect from "@/pages/WhyPayDirect";
 import Invite from "@/pages/Invite";
 //import Invite from "@/pages/Invite";
 import Overview from "@/pages/Dashboard/Overview";
@@ -51,6 +54,9 @@ function App() {
         <Route path="/reset-password" element={<ResetPassword />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/pay-step" element={<PayStep />} />
+        <Route path="/pay-details" element={<PayDetails />} />
+        <Route path="/why-pay-direct" element={<WhyPayDirect />} />
       <Route path="/invite/:referId" element={<Invite />} />
 
         <Route path="/dashboard" element={<Dashboard />}>

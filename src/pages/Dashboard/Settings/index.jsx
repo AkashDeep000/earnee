@@ -13,6 +13,10 @@ import {
 } from "formik";
 import withdrawFormValidator from "@/helper/validator/withdrawFormValidator";
 import pb from "@/pb"
+import Spinner from "@/components/utils/Spinner";
+import toast, {
+  Toaster
+} from 'react-hot-toast';
 
 function Settings() {
   const user = pb.authStore.model
@@ -34,9 +38,18 @@ function Settings() {
   }, []);
 
   const handleUpdate = async () => {
-    alert("ok")
-    setEditState("idle")
+    try {
+      setEditState("saving")
+      const updatedProfile = await pb.records.update('profiles', user.profile.id, formik.values);
+      await pb.users.refresh()
+      toast.success("Successfully saved bank details.")
+      setEditState("idle")
+    } catch (e) {
+      console.log(e)
+      toast.error("Failed to save bank details.")
+    }
   }
+
   const formik = useFormik({
     validateOnChange: false,
     validateOnBlur: false,
@@ -46,23 +59,41 @@ function Settings() {
       accountNumber: updatedUser.profile.accountNumber,
       accountIFSC: updatedUser.profile.accountIFSC,
     },
-    validate: withdrawFormValidator,
+   validate: withdrawFormValidator,
     onSubmit: handleUpdate,
   });
 
+  const handleBtn = () => {
+    if (editState === "idle") {
+      setEditState("editing")
+    }
+    if (editState === "editing") {
+      formik.handleSubmit()
+    }
+  }
+  useEffect(() => {
+    if (!user) return
+    if (!user.profile.accountIFSC && !user.profile.accountNumber && !user.profile.accountName && !user.profile.upi) {
+      setEditState("editing")
+    }
+  },
+    [user])
+
   return (
     <>
+    <Toaster />
     <div className="p-2 grid gap-2">
             <div className="text-gray-700 text-lg bg-white w-full border p-2">
-      <form onSubmit={formik.handleSubmit}>          
     <div className="flex items-center justify-between">
     <p className="text-indigo-500">
           Bank details
     </p>
     <button
-      type="submit"
-      className="py-1 px-3 rounded bg-indigo-500 text-white ">
-   {editState === "editing" ? "Save": "Edit"}
+      onClick={handleBtn}
+      className={`py-1 px-3 rounded bg-indigo-500 text-white ${editState === "editing" && "bg-purple-600"}`}>
+   {editState === "editing" ? "Save": editState === "saving" ?
+      <Spinner className="mx-2 w-6 h-6 text-indigo-200 animate-spin fill-white" />:
+      "Edit"}
     </button>
     </div>
     <div className="grid gap-3">
@@ -151,7 +182,7 @@ function Settings() {
     ): null}
   </div>
 </div>
-</form>
+
 </div>
       <Link to="/reset-password">
      <button className="w-full text-gray-700 text-lg bg-white w-full border px-2 py-4">  Reset Password </button>
