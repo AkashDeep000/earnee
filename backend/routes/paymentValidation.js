@@ -78,7 +78,7 @@ router.post('/', async (req, res, next) => {
       })
       .then(() => {
         //  console.log(paymentUpdate, userUpdate)
-        res.json({
+        return res.json({
           status: 'ok'
         })
       })

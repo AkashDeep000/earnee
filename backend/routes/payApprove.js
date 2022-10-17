@@ -5,20 +5,30 @@ dotenv.config();
 import {
   uid
 } from "uid"
-
+import PocketBase from "pocketbase"
 import createError from "http-errors";
 
-router.post('/', async (req, res, next) => {
-  const {paymentId} = req.body
-  if (paymentId) {
+router.post('/:paymentId', async (req, res, next) => {
+  const {
+    paymentId1
+  } = req.params
+  const {
+    paymentId
+  } = req.body
+  const {
+    token
+  } = req.query
+  console.log(paymentId, paymentId1, token)
+  if (paymentId && token) {
     console.log('request is legit')
     // process it
 
     try {
+      const pb = new PocketBase(process.env.PB_URL);
       //  console.log(req.body.payload.payment.entity)
-
+      pb.authStore.save(token)
       const paymentArray = await pb.records.getFullList('manualPayments', 1, {
-        filter: `(id='${paymentId}')`,
+        filter: `(id='${paymentId || paymentId1}')`,
         expand: 'package,profile,profile.referedBy'
       });
       const payment = paymentArray[0]
@@ -27,22 +37,21 @@ router.post('/', async (req, res, next) => {
       if (payment["@expand"].profile.activePackage) {
         next(createError.Unauthorized())
       }
-      
+
       console.log(payment)
-      const paymentUpdate = pb.records.update('payments', payment.id, {
-        status: "successfull",
-        payload: req.body
+      const paymentUpdate = pb.records.update('manualPayments', payment.id, {
+        verified: true,
       });
 
 
       const referUpdateFn = async () => {
         console.log('referedId', payment['@expand'].profile.referedBy)
         if (!payment['@expand'].profile.referedBy) return
-        let commission2 = 0 
+        let commission2 = 0
         if (payment['@expand'].profile["@expand"]?.referedBy?.referedBy) {
           commission2 = payment['@expand'].package.commission2
         }
-        
+
         const referArray = await pb.records.getFullList('refers', 1, {
           filter: `(referedBy='${payment['@expand'].profile.referedBy}' && referedTo='${payment['@expand'].profile.id}')`
         });
@@ -69,7 +78,7 @@ router.post('/', async (req, res, next) => {
       })
       .then(() => {
         //  console.log(paymentUpdate, userUpdate)
-        res.json({
+        return res.json({
           status: 'ok'
         })
       })
