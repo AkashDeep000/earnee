@@ -1,17 +1,13 @@
-
 const validate = (values) => {
   const errors = {};
-  if (!values.accountIFSC) {
-    errors.accountIFSC = "Required"
+  if (!values.amount) {
+    errors.amount = "Required"
   }
-  if (!values.accountNumber) {
-    errors.accountNumber = "Required"
+  if (values.balance < (values.amount - 1)) {
+    errors.amount = "Not enough banance"
   }
-  if (!values.accountName) {
-    errors.accountName = "Required"
-  }
-  if (!values.upi) {
-    errors.upi = "Required"
+  if (values.amount < 50) {
+    errors.amount = "Minimum withdraw amount is 50 rupees"
   }
   return errors;
 };

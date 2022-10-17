@@ -65,36 +65,47 @@ function Home() {
         paddingTop: window.innerWidth * 800 / 1920
       }}
       className="p-4 md:p-[5%]">
-    <div className="text-center mt-4 grid md:grid-cols-3">
-    <div className="grid place-items-center gap-4 py-10 px-5 bg-white/60">
-        <img src="/icons/cheak-list.png" />
-        <p className="text-lg font-semibold">
-        Step 1 - Enroll
-      </p>
-      </div>
-    <div className="grid place-items-center gap-4 py-10 px-5 bg-gradient-to-l from-rose-400 to-pink-400">
-        <img src="/icons/cheaklist-1.png" />
-        <p className="text-lg text-white font-semibold">
-        Step 2 - Learn & Implement
-      </p>
-    </div>
-    <div className="grid place-items-center gap-4 py-10 px-5 bg-white/60">
-        <img src="/icons/cheak-list.png" />
-        <p className="text-lg font-semibold">
-        Step 3 - Success & Earning
+      <div className="text-4xl md:text-6xl lg:text-8xl text-gray-800 text-center p-4 mt-8 font-calistoga">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Welcome</span>
+      <br />
+        <span className="text-purple-500 text-2xl md:text-4xl lg:text-6xl">to the next level of online
+        <br />
+        marketing
+        </span>
+  </div>
+    <div className="grid grid-cols-3 p-2 gap-6 place-items-center">
+   <div className="text-center grid gap-2">
+    <img className="w-full max-w-[12rem]" src="/cash.png" />
+    <p className="font-semibold text-sm md:text-2xl lg:text-3xl">
+1 day payment
+    </p>
+  </div>
+   <div className="text-center grid gap-2">
+    <img className="mt-[20%] w-full max-w-[12rem]" src="/course.png" />
+    <p className="font-semibold text-sm md:text-2xl lg:text-3xl">
+valuable courses
+    </p>
+  </div>
+   <div className="text-center grid gap-2">
+    <img className="w-full max-w-[12rem]" src="/90per.png" />
+    <p className="font-semibold text-sm md:text-2xl lg:text-3xl">
+90% commission
     </p>
   </div>
 </div>
-<br />
-<br />
+<div>
+</div>
+
+    <br />
+  <br />
 
 <div className="grid place-items-center md:grid-cols-[1fr_2fr] gap-8">
   <img className="w-full h-auto" src="/discover-package.jpg" />
   <div>
-<p className="mb-4 text-3xl font-semibold text-indigo-500">
+  <p className="mb-4 text-3xl font-semibold text-indigo-500">
 Discover our packages
 </p>
-<p>
+  <p>
 The courses we offer are available only via Packages. The Package payment is onetime and you get lifetime access to the courses under Package by paying only onetime.
 </p>
 </div>
@@ -102,7 +113,8 @@ The courses we offer are available only via Packages. The Package payment is one
 <div className="mt-5 mb-3 text-center bg-white shadow-lg p-4 text-2xl text-pink-500">
 LEARN SKILLS AND GROW WITH US
 </div>
-{data &&
+{
+data &&
 <div className="grid gap-3 md:grid-cols-2">
 {data.map(el => {
 return (
@@ -148,11 +160,10 @@ Join Now
 </div>
 }
 
- {isLoading &&
+{
+isLoading &&
 <center>Loading Packages...</center>
-}
-</div>
-<Footer /> < />
+} < /div> < Footer / > < />
 );
 }
 

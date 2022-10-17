@@ -11,7 +11,7 @@ import {
 import {
   useFormik
 } from "formik";
-import withdrawFormValidator from "@/helper/validator/withdrawFormValidator";
+import bankInfoValidator from "@/helper/validator/bankInfoValidator";
 import pb from "@/pb"
 import Spinner from "@/components/utils/Spinner";
 import toast, {
@@ -59,7 +59,7 @@ function Settings() {
       accountNumber: updatedUser.profile.accountNumber,
       accountIFSC: updatedUser.profile.accountIFSC,
     },
-    validate: withdrawFormValidator,
+    validate: bankInfoValidator,
     onSubmit: handleUpdate,
   });
 
