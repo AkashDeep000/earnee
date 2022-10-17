@@ -25,7 +25,9 @@ import toast, {
   Toaster
 } from 'react-hot-toast';
 import Spinner from "@/components/utils/Spinner";
-import { BsTelegram } from "react-icons/bs";
+import {
+  BsTelegram
+} from "react-icons/bs";
 
 const Payment = () => {
   let navigate = useNavigate();
@@ -106,14 +108,13 @@ const Payment = () => {
 
 
   const fileUpload = async () => {
-
     if (isSelectedFile1 && isSelectedFile2 && data) {
       const formData = new FormData();
       formData.append('screenshoot1', selectedFile1);
       formData.append('screenshoot2', selectedFile2);
       formData.append('amount', data.price);
       formData.append('package', data.id);
-      formData.append('profile', user.id);
+      formData.append('profile', user.profile.id);
 
       console.log(formData)
       try {
@@ -227,11 +228,10 @@ Copy
 
 </div>
   < p className = "my-2 text-sm items-center text-indigo-500 font-semibold" >
-  Step 2: Submit payment proofs < /p> 
+  Step 2: Submit payment proofs < /p>
   <a className='place-self-center text-sky-500' href="https://t.me/earneeofficial">
- <BsTelegram className="inline w-8 h-6"/>  https://t.me/earneeofficial
+ <BsTelegram className="inline w-8 h-6" />  https://t.me/earneeofficial
   </a>
-  
   < label class = "block" > < span class = "m-2 text-sm" > Upload this page screenshoot < /span > < input
   onChange = {() => {
   setSelectedFile1(event.target.files[0])
