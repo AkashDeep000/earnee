@@ -61,7 +61,7 @@ router.post('/:paymentId', async (req, res, next) => {
           commission1: payment['@expand'].package.commission1,
           commission2: commission2,
           package: payment.package,
-          payment: payment.id,
+          manualPayment: payment.id,
         });
       }
       const referUpdate = referUpdateFn()
@@ -70,18 +70,17 @@ router.post('/:paymentId', async (req, res, next) => {
       });
 
 
+      try {
+        await Promise.all([userUpdate, referUpdate, paymentUpdate])
 
-      await Promise.all([userUpdate, referUpdate, paymentUpdate])
-      .catch(err => {
-        return res.status(404).json()
-        throw err
-      })
-      .then(() => {
         //  console.log(paymentUpdate, userUpdate)
         return res.json({
           status: 'ok'
         })
-      })
+      } catch (e) {
+        console.log(e)
+        return res.status(404).json()
+      }
 
     } catch (e) {
       console.log(e)
