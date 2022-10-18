@@ -74,7 +74,7 @@ function Home() {
       <br />
         <span className="text-purple-500 text-2xl md:text-4xl lg:text-6xl">to the next level of online
         <br />
-        marketing..
+        marketing
         </span>
   </div>
     <div className="grid grid-cols-3 p-2 gap-6 place-items-center">
