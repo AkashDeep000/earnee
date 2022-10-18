@@ -14,8 +14,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       workboxOptions: {
-            skipWaiting: true
-        }
+        skipWaiting: true
+      },
       devOptions: {
         enabled: false
       },
