@@ -29,7 +29,7 @@ Contact Us
   <br />
 <span className="font-bold">contact@earnee.in</span>
 <br />
-<span className="font-bold">+919875410668</span>
+<span className="font-bold">+919432119684</span>
 
 </p>
 </div>
