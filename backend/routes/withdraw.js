@@ -48,6 +48,7 @@ router.post('/:profileId', async (req, res, next) => {
       profile: profileId,
       amount: amount,
       upi: profile.upi,
+      phone: profile.phone,
       accountIFSC: profile.accountIFSC,
       accountName: profile.accountName,
       accountNumber: profile.accountNumber,
