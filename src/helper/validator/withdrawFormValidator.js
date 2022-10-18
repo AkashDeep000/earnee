@@ -3,6 +3,9 @@ const validate = (values) => {
   if (!values.amount) {
     errors.amount = "Required"
   }
+  if (values.amount % 1 !== 0) {
+    errors.amount = "Amount should not include point (.). Eg- 50, 400 etc."
+  }
   if (values.balance < (values.amount - 1)) {
     errors.amount = "Not enough banance"
   }

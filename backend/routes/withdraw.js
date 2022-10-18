@@ -47,7 +47,10 @@ router.post('/:profileId', async (req, res, next) => {
       const withdraw = await pb.records.create('withdraws', {
         profile: profileId,
         amount: amount,
-        upi: profile.upi || "upi",
+        upi: profile.upi,
+        upi: profile.accountIFSC,
+        upi: profile.accountName,
+        upi: profile.accountNumber,
         isPaid: false,
       });
 
