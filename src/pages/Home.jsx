@@ -84,18 +84,20 @@ function Home() {
     <img className="mt-[20%] w-full max-w-[12rem]" src="/course.png" />
     <p className="font-semibold text-sm md:text-2xl lg:text-3xl">
 valuable courses
-    </p>
-  </div>
+  </p>
+</div>
    <div className="text-center grid gap-2">
     <img className="w-full max-w-[12rem]" src="/90per.png" />
     <p className="font-semibold text-sm md:text-2xl lg:text-3xl">
 90% commission
-    </p>
-  </div>
+</p>
 </div>
-<div>
 </div>
-
+<Link className="grid place-items-center mt-3" to="/signup">
+<button className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-3xl p-[.3em] rounded font-semibold">
+Join Now -<span className="ml-[-.4em]">></span>
+</button>
+</Link>
     <br />
   <br />
 
@@ -140,8 +142,8 @@ return (
 
 
 <div className="text-2xl font-bold  text-slate-700 text-transparent bg-clip-text bg-clip-text bg-gradient-to-l from-purple-500 to-pink-600">
-<span>₹</span>{el.price} <p className="text-sm">
-(for limited time)
+<span>₹</span>{el.price * 0.82} <p className="text-sm">
++GST (for limited time)
 </p>
 </div>
 
