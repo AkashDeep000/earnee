@@ -13,6 +13,9 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      workboxOptions: {
+            skipWaiting: true
+        }
       devOptions: {
         enabled: false
       },
