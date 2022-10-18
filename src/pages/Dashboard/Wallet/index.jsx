@@ -42,7 +42,7 @@ function Wallet() {
 
   useEffect(() => {
     setActiveNav("wallet");
-    setActiveHeaderTitle("Wallet");
+    setActiveHeaderTitle("Wallets");
   }, []);
 
   const {
