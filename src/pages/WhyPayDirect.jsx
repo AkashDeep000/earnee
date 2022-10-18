@@ -1,5 +1,7 @@
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import ReactPlayer from 'react-player'
+
 export default function WhyPayDirect() {
 
   return (
@@ -9,33 +11,17 @@ export default function WhyPayDirect() {
     <div className=" w-full">
  <div className="grid place-items-center">
 
-      <h2 className="pt-6 text-3xl font-bold  text-slate-700 ">
-Contact Us
+      <h2 className="pt-6 px-8 text-xl font-bold  text-slate-700 ">
+Why we want screenshots?
       </h2>
-      <p className="text-slate-700 px-6 py-4 text-xl w-11/12 max-w-[50ch]">
-      <span className="text-slate-700 text-2xl font-bold">
-        Earnee Platforn
-      </span>
-      <br />
-      <br />
-      Rajpur-Sonarpur Road
-      <br />
-      Sonarpur
-      <br />
-      South 24 Parganas
-      <br />
-      West Bengal, kol-700150
-  <br />
-  <br />
-<span className="font-bold">contact@earnee.in</span>
-<br />
-<span className="font-bold">+919875410668</span>
-
-</p>
-</div>
-</div>
+      <p className="p-4 w-full max-w-[50ch] aspect-video">
+      
+           <ReactPlayer width="100%" height='100%' url="https://youtu.be/8mO6-XwlOS4" />
+    </p>
+    </div>
+    </div>
 
   <Footer />
-</div> < />
-)
+    </div> < />
+  )
 }

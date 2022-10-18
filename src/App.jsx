@@ -17,6 +17,7 @@ import Refers from "@/pages/Dashboard/Refers";
 import Wallet from "@/pages/Dashboard/Wallet";
 import Announcements from "@/pages/Dashboard/Announcements";
 import Home from "@/pages/Home";
+import Start from "@/pages/Start";
 import Contact from "@/pages/Contact";
 import Terms from "@/pages/Terms";
 import Refund from "@/pages/Refund";
@@ -47,6 +48,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/start" element={<Start />} />
         <Route path="/terms" element={<Terms />} />
         <Route path="/refund" element={<Refund />} />
         <Route path="/privacy" element={<Privacy />} />

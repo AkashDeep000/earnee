@@ -5,6 +5,7 @@ import {
   Link,
   useNavigate
 } from "react-router-dom";
+import ReactPlayer from 'react-player'
 
 export default function PayStep() {
   const navigate = useNavigate()
@@ -67,7 +68,9 @@ Screenshot of the next page
     <p className="text-center text-sm">
     Watch this video for registration process
     </p>
-    <img className="aspect-video w-full bg-gray-200" src="/reg-video-thumb.jpg"/>
+    <div className="aspect-video w-full bg-gray-200">
+      <ReactPlayer width="100%" height='100%' url="https://youtu.be/_gAljGklIqo" />
+    </div>
     </div>
     </p>
     <button onClick={() => navigate("/pay-details")} className="bg-gradient-to-l to-pink-500 from-purple-500 text-white px-5 py-2 rounded font-bold">

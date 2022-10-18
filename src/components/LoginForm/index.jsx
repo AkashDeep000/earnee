@@ -46,8 +46,8 @@ const LoginForm = () => {
 
 
 
-        navigate("/dashboard");
-      
+      navigate("/dashboard");
+
 
     } catch (e) {
       console.log(e);

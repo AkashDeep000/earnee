@@ -16,20 +16,20 @@ export default defineConfig({
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg}']
       },
-      includeAssets: ['favicon.ico', 'elogo.png'],
+      includeAssets: ['favicon.ico', 'elogo-croped.png'],
       manifest: {
-        start_url: "/login",
+        start_url: "/start",
         name: 'Earnee',
         short_name: 'Earnee',
         description: 'Next level online marketing',
         theme_color: '#ffffff',
         icons: [{
-          src: 'elogo.png',
+          src: 'elogo-croped.png',
           sizes: '192x192',
           type: 'image/png'
         },
           {
-            src: 'elogo.png',
+            src: 'elogo-croped.png',
             sizes: '512x512',
             type: 'image/png'
           }]
