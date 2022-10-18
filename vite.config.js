@@ -18,22 +18,21 @@ export default defineConfig({
       },
       includeAssets: ['favicon.ico', 'elogo.png'],
       manifest: {
-        name: 'My Awesome App',
-        short_name: 'MyApp',
-        description: 'My Awesome App description',
+        start_url: "/login",
+        name: 'Earnee',
+        short_name: 'Earnee',
+        description: 'Next level online marketing',
         theme_color: '#ffffff',
-        icons: [
-          {
-            src: 'elogo.png',
-            sizes: '192x192',
-            type: 'image/png'
-          },
+        icons: [{
+          src: 'elogo.png',
+          sizes: '192x192',
+          type: 'image/png'
+        },
           {
             src: 'elogo.png',
             sizes: '512x512',
             type: 'image/png'
-          }
-        ]
+          }]
       }
     })
   ],
