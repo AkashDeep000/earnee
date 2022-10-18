@@ -11,6 +11,7 @@ import {
 import {
   Link
 } from "react-router-dom";
+import ReactPlayer from 'react-player'
 
 
 const images = [{
@@ -102,7 +103,9 @@ Join Now -<span className="ml-[-.4em]">></span>
   <br />
 
 <div className="grid place-items-center md:grid-cols-[1fr_2fr] gap-8">
-  <img className="w-full h-auto" src="/discover-package.jpg" />
+<div className="w-full aspect-video bg-gray-50">
+  <ReactPlayer width="100%" height='100%' url="https://youtu.be/xNM2dL5d8AU" />
+</div>
   <div>
   <p className="mb-4 text-3xl font-semibold text-indigo-500">
 Discover our packages
