@@ -188,6 +188,12 @@ function Settings() {
 </div>
 
 </div>
+<a href="https://cdn.earnee.in/earnee-app-release-signed.apk" download="earnee-app-release-signed.apk">
+<button className="m-[0_auto] text-indigo-500 rounded font-semibold grid grid-cols-[auto_1fr] place-items-center gap-2 bg-white shadow p-3 text-xl">
+<img className="w-8 h-8 rounded-lg" src="/elogo.png" />
+<span>Download APK</span>
+</button>
+</a>
       <Link to="/reset-password">
      <button className="w-full text-gray-700 text-lg bg-white w-full border px-2 py-4 font-semibold">  Reset Password </button>
       </Link>

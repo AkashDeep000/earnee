@@ -102,7 +102,13 @@ valuable courses
 Join Now -<span className="ml-[-.4em]">></span>
 </button>
 </Link>
-<div className="grid mt-4">
+<a href="https://cdn.earnee.in/earnee-app-release-signed.apk" download="earnee-app-release-signed.apk">
+<button className="m-[0_auto] text-indigo-500 rounded font-semibold grid grid-cols-[auto_1fr] place-items-center gap-2 bg-white shadow mt-6 p-3 text-xl">
+<img className="w-8 h-8 rounded-lg" src="/elogo.png" />
+<span>Download APK</span>
+</button>
+</a>
+<div className="grid mt-6">
   <a className='place-self-center mr-3 text-sky-500' href="https://t.me/earneeofficial">
  <BsTelegram className="inline w-8 h-6" />  https://t.me/earneeofficial
   </a>
