@@ -11,26 +11,7 @@ import {
 export default defineConfig({
   plugins: [
     react(),
-    VitePWA({
-      includeAssets: ['favicon.ico', 'elogo.png'],
-      manifest: {
-        start_url: "/login",
-        name: 'Earnee',
-        short_name: 'Earnee',
-        description: 'Next level online marketing',
-        theme_color: '#ffffff',
-        icons: [{
-          src: 'elogo.png',
-          sizes: '192x192',
-          type: 'image/png'
-        },
-          {
-            src: 'elogo.png',
-            sizes: '512x512',
-            type: 'image/png'
-          }]
-      }
-    })
+    VitePWA()
   ],
   resolve: {
     alias: [{
