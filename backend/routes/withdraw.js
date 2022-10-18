@@ -27,11 +27,11 @@ router.post('/:profileId', async (req, res, next) => {
   if (!profileId || !token || !amount) {
     next(createError.Unauthorized())
   }
-  
-  if (amount  % 1 !== 0) {
+
+  if (amount % 1 !== 0) {
     next(createError.Unauthorized())
   }
-  
+
   try {
     client.authStore.save(token, {
       verified: false
@@ -43,19 +43,19 @@ router.post('/:profileId', async (req, res, next) => {
       res.status(423).json({
         success: false, error: "Insufficient balance"
       })
-}
-      const withdraw = await pb.records.create('withdraws', {
-        profile: profileId,
-        amount: amount,
-        upi: profile.upi,
-        upi: profile.accountIFSC,
-        upi: profile.accountName,
-        upi: profile.accountNumber,
-        isPaid: false,
-      });
+    }
+    const withdraw = await pb.records.create('withdraws', {
+      profile: profileId,
+      amount: amount,
+      upi: profile.upi,
+      accountIFSC: profile.accountIFSC,
+      accountName: profile.accountName,
+      accountNumber: profile.accountNumber,
+      isPaid: false,
+    });
 
-      res.send(withdraw)
-    
+    res.send(withdraw)
+
   } catch (error) {
     console.log(error)
     res.status(400).json({
