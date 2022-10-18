@@ -12,7 +12,7 @@ function Dashboard() {
 
   useEffect(() => {
     const isLogin = pb.authStore.isValid
-    const isSub = !!pb.authStore.model?.profile.activePackage
+    const isSub = !!pb.authStore.model?.profile?.activePackage
     if (!isLogin) {
       navigate("/signup");
     }

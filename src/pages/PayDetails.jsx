@@ -158,7 +158,7 @@ const Payment = () => {
         </LogOut>
       </div>
       <p>
-Profile ID: {" "}{user.profile.id}
+Profile ID: {" "}{user?.profile?.id}
       </p>
       </div>
       <button className="text-indigo-500 text-sm font-semibold" onClick={() => {
