@@ -140,7 +140,7 @@ const Payment = () => {
     <>
     <Toaster />
     <div className="min-h-screen w-full grid place-items-center p-3">
-    <div className="bg-white w-[95%] max-w-[25rem] grid p-4">
+    <div className="bg-white w-[98%] max-w-[25rem] grid p-4">
         {isLoading || isBankDetailsLoading ?
       <center>loading package...</center>:
       user?.profile?.activePackage ?
