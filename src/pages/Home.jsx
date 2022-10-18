@@ -12,6 +12,9 @@ import {
   Link
 } from "react-router-dom";
 import ReactPlayer from 'react-player'
+import {
+  BsTelegram
+} from "react-icons/bs";
 
 
 const images = [{
@@ -99,6 +102,11 @@ valuable courses
 Join Now -<span className="ml-[-.4em]">></span>
 </button>
 </Link>
+<div className="grid mt-4">
+  <a className='place-self-center mr-3 text-sky-500' href="https://t.me/earneeofficial">
+ <BsTelegram className="inline w-8 h-6" />  https://t.me/earneeofficial
+  </a>
+</div>
     <br />
   <br />
 
