@@ -28,6 +28,9 @@ import Spinner from "@/components/utils/Spinner";
 import {
   BsTelegram
 } from "react-icons/bs";
+import {
+  uid
+} from "uid"
 
 const Payment = () => {
   let navigate = useNavigate();
@@ -115,6 +118,7 @@ const Payment = () => {
       formData.append('amount', data.price);
       formData.append('package', data.id);
       formData.append('profile', user.profile.id);
+      formData.append('transactionId', uid(12));
 
       console.log(formData)
       try {
