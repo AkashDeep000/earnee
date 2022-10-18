@@ -11,7 +11,31 @@ import {
 export default defineConfig({
   plugins: [
     react(),
-    VitePWA()
+    VitePWA({
+      registerType: 'autoUpdate',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}']
+      },
+      includeAssets: ['favicon.ico', 'elogo.png'],
+      manifest: {
+        name: 'My Awesome App',
+        short_name: 'MyApp',
+        description: 'My Awesome App description',
+        theme_color: '#ffffff',
+        icons: [
+          {
+            src: 'elogo.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: 'elogo.png',
+            sizes: '512x512',
+            type: 'image/png'
+          }
+        ]
+      }
+    })
   ],
   resolve: {
     alias: [{
