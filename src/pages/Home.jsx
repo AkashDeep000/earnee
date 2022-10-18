@@ -71,7 +71,7 @@ function Home() {
       <br />
         <span className="text-purple-500 text-2xl md:text-4xl lg:text-6xl">to the next level of online
         <br />
-        marketing
+        marketing..
         </span>
   </div>
     <div className="grid grid-cols-3 p-2 gap-6 place-items-center">
@@ -103,7 +103,7 @@ Join Now -<span className="ml-[-.4em]">></span>
   <br />
 
 <div className="grid place-items-center md:grid-cols-[1fr_2fr] gap-8">
-<div className="w-full aspect-video bg-gray-50">
+<div className="w-full aspect-video bg-gray-">
   <ReactPlayer width="100%" height='100%' url="https://youtu.be/xNM2dL5d8AU" />
 </div>
   <div>
