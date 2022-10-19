@@ -98,8 +98,8 @@ valuable courses
 </div>
 </div>
 <Link className="grid place-items-center mt-3" to="/signup">
-<button className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-3xl p-[.3em] rounded font-semibold">
-Join Now -<span className="ml-[-.4em]">></span>
+<button className="bg-gradient-to-r from-purple-500 to-indigo-500 text-white text-3xl p-[.3em] rounded shadow font-semibold">
+Get Started Now -<span className="ml-[-.4em]">></span>
 </button>
 </Link>
 <a href="https://cdn.earnee.in/earnee-app-release-signed.apk" download="earnee-app-release-signed.apk">
@@ -109,8 +109,8 @@ Join Now -<span className="ml-[-.4em]">></span>
 </button>
 </a>
 <div className="grid mt-6">
-  <a className='place-self-center mr-3 text-sky-500' href="https://t.me/earneeofficial">
- <BsTelegram className="inline w-8 h-6" />  https://t.me/earneeofficial
+  <a className='place-self-center mr-3 text-sky-500' href="https://telegram.me/earneeofficial">
+ <BsTelegram className="inline w-8 h-6" />  Join Our Telegram
   </a>
 </div>
     <br />

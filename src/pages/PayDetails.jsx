@@ -233,8 +233,8 @@ Copy
 </div>
   < p className = "my-2 text-sm items-center text-indigo-500 font-semibold" >
   Step 2: Submit payment proofs < /p>
-  <a className='place-self-center text-sky-500' href="https://t.me/earneeofficial">
- <BsTelegram className="inline w-8 h-6" />  https://t.me/earneeofficial
+  <a className='place-self-center text-sky-500' href="https://telegram.me/earneeofficia">
+ <BsTelegram className="inline w-8 h-6" />  Join Our Telegram
   </a>
   < label class = "block" > < span class = "m-2 text-sm" > Upload this page screenshoot < /span > < input
   onChange = {() => {

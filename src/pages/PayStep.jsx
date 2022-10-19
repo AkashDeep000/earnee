@@ -53,7 +53,7 @@ Screenshot of the next page
       </p>
      <p className="ml-2">
  To our telegram channel
- {' '}<a className="text-indigo-500"href="https://t.me/earneeofficial">https://t.me/earneeofficial</a>
+ {' '}<a className="text-indigo-500"href="https://telegram.me/earneeofficial">Join Our Telegram</a>
       </p>
     </div>
       <div className="grid grid-cols-[auto_1fr] ml-10">
