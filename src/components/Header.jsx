@@ -5,7 +5,7 @@ import {
 function Header() {
 
   return (
-    <div className="z-50 px-2 py-2 flex items-center justify-between sticky top-0 bg-white bg-[length:100%_100%] shadow-sm">
+    <div className="z-50 px-2 py-2 flex items-center justify-between sticky top-0 backdrop-blur-md bg-white/70 bg-[length:100%_100%] shadow-sm">
       <div className="flex items-center gap-2">
 
           <Link to="/">
