@@ -118,7 +118,7 @@ Get Started Now -<span className="ml-[-.4em]">></span>
 
 <div className="grid place-items-center md:grid-cols-[1fr_2fr] gap-8">
 <div className="w-full aspect-video bg-gray-">
-  <ReactPlayer width="100%" height='100%' url="https://youtu.be/xNM2dL5d8AU" />
+  <ReactPlayer width="100%" height='100%' url="https://youtu.be/Kqdm_66FnLE" />
 </div>
   <div>
   <p className="mb-4 text-3xl font-semibold text-indigo-500">
