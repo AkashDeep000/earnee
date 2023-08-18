@@ -1,8 +1,8 @@
-[ {
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "xyz.appmaker.vpubue",
-    "sha256_cert_fingerprints": ["2C:3F:8E:B1:7B:D8:28:27:4E:DA:71:78:95:63:49:AC:4F:1D:61:DB:F9:60:A4:34:EC:62:07:4E:83:AD:43:04"]
-  }
-}]
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "in.earnee.twa",
+        "sha256_cert_fingerprints": ["A3:74:87:13:B1:E6:0E:5B:79:72:7A:6E:D7:21:3E:35:35:A3:25:14:70:4C:48:8B:BC:3C:03:83:91:35:C8:6C"]
+      }
+    }]
